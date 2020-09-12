@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Python</title>
+  
+  <subtitle>GO Big or Go Home</subtitle>
+  <link href="https://rsghll.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://rsghll.github.io/"/>
+  <updated>2020-09-12T13:53:06.771Z</updated>
+  <id>https://rsghll.github.io/</id>
+  
+  <author>
+    <name>mldsh</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis主从</title>
+    <link href="https://rsghll.github.io/2020/09/12/redis-zhu-cong/"/>
+    <id>https://rsghll.github.io/2020/09/12/redis-zhu-cong/</id>
+    <published>2020-09-12T13:50:42.483Z</published>
+    <updated>2020-09-12T13:53:06.771Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;redis集群&quot;&gt;&lt;a href=&quot;#redis集群&quot; class=&quot;headerlink&quot; title=&quot;redis集群:&quot;&gt;&lt;/a&gt;redis集群:&lt;/h4&gt;&lt;pre class=&quot; language-python&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="SQL" scheme="https://rsghll.github.io/categories/SQL/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>相思啊！</title>
+    <link href="https://rsghll.github.io/2020/09/12/xiang-si/"/>
+    <id>https://rsghll.github.io/2020/09/12/xiang-si/</id>
+    <published>2020-09-12T12:26:40.484Z</published>
+    <updated>2020-09-12T13:49:58.863Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;相思&quot;&gt;&lt;a href=&quot;#相思&quot; class=&quot;headerlink&quot; title=&quot;相思&quot;&gt;&lt;/a&gt;相思&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://hanyu.baidu.com/s?wd=%E7%8E%8B%E7%BB%B4&quot;&gt;           </summary>
+        
+      
+    
+    
+    
+    <category term="诗词歌赋" scheme="https://rsghll.github.io/categories/%E8%AF%97%E8%AF%8D%E6%AD%8C%E8%B5%8B/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://rsghll.github.io/2020/09/12/hello-world/"/>
+    <id>https://rsghll.github.io/2020/09/12/hello-world/</id>
+    <published>2020-09-12T08:07:57.214Z</published>
+    <updated>2020-09-12T13:19:31.064Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
