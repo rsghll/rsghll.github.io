@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>RabbitMQ能为你做些什么？</title>
+      <link href="2020/09/13/rabbitmq-neng-zuo-shi-me/"/>
+      <url>2020/09/13/rabbitmq-neng-zuo-shi-me/</url>
+      
+        <content type="html"><![CDATA[<h2 id="RabbitMQ能为你做些什么？"><a href="#RabbitMQ能为你做些什么？" class="headerlink" title="RabbitMQ能为你做些什么？"></a>RabbitMQ能为你做些什么？</h2><p><strong>消息队列中间件是分布式系统中重要的组件，主要解决应用解耦，异步消息，流量削锋等问题，实现高性能，高可用，可伸缩和最终一致性架构。目前使用较多的消息队列有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ。</strong></p><p><strong>RabbitMQ 是一个由 Erlang 语言开发的 AMQP 的开源实现。</strong></p><p><strong>rabbitMQ是一款基于AMQP协议的消息中间件，它能够在应用之间提供可靠的消息传输。在易用性，扩展性，高可用性上表现优秀。使用消息中间件利于应用之间的解耦，生产者（客户端）无需知道消费者（服务端）的存在。而且两端可以使用不同的语言编写，大大提供了灵活性。</strong></p><p><strong>消息系统允许软件、应用相互连接和扩展．这些应用可以相互链接起来组成一个更大的应用，或者将用户设备和数据进行连接．消息系统通过将消息的发送和接收分离来实现应用程序的异步和解偶．</strong></p><p>或许你正在考虑进行数据投递，非阻塞操作或推送通知。或许你想要实现发布／订阅，异步处理，或者工作队列。所有这些都可以通过消息系统实现。</p><p>RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。</p><h2 id="技术亮点"><a href="#技术亮点" class="headerlink" title="技术亮点"></a>技术亮点</h2><h3 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h3><p>RabbitMQ提供了多种技术可以让你在性能和可靠性之间进行权衡。这些技术包括持久性机制、投递确认、发布者证实和高可用性机制。</p><h3 id="灵活的路由"><a href="#灵活的路由" class="headerlink" title="灵活的路由"></a>灵活的路由</h3><p>消息在到达队列前是通过交换机进行路由的。RabbitMQ为典型的路由逻辑提供了多种内置交换机类型。如果你有更复杂的路由需求，可以将这些交换机组合起来使用，你甚至可以实现自己的交换机类型，并且当做RabbitMQ的插件来使用。</p><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><p>在相同局域网中的多个RabbitMQ服务器可以聚合在一起，作为一个独立的逻辑代理来使用。</p><h3 id="联合"><a href="#联合" class="headerlink" title="联合"></a>联合</h3><p>对于服务器来说，它比集群需要更多的松散和非可靠链接。为此RabbitMQ提供了联合模型。</p><h3 id="高可用的队列"><a href="#高可用的队列" class="headerlink" title="高可用的队列"></a>高可用的队列</h3><p>在同一个集群里，队列可以被镜像到多个机器中，以确保当其中某些硬件出现故障后，你的消息仍然安全。</p><h3 id="多协议"><a href="#多协议" class="headerlink" title="多协议"></a>多协议</h3><p>RabbitMQ 支持多种消息协议的消息传递。</p><h3 id="广泛的客户端"><a href="#广泛的客户端" class="headerlink" title="广泛的客户端"></a>广泛的客户端</h3><p>只要是你能想到的编程语言几乎都有与其相适配的RabbitMQ客户端。</p><h3 id="可视化管理工具"><a href="#可视化管理工具" class="headerlink" title="可视化管理工具"></a>可视化管理工具</h3><p>RabbitMQ附带了一个易于使用的可视化管理工具，它可以帮助你监控消息代理的每一个环节。</p><h3 id="追踪"><a href="#追踪" class="headerlink" title="追踪"></a>追踪</h3><p>如果你的消息系统有异常行为，RabbitMQ还提供了追踪的支持，让你能够发现问题所在。</p><h3 id="插件系统"><a href="#插件系统" class="headerlink" title="插件系统"></a>插件系统</h3><p>RabbitMQ附带了各种各样的插件来对自己进行扩展。你甚至也可以写自己的插件来使用。</p><h2 id="还有什么呢…"><a href="#还有什么呢…" class="headerlink" title="还有什么呢…"></a>还有什么呢…</h2><h3 id="商业支持"><a href="#商业支持" class="headerlink" title="商业支持"></a>商业支持</h3><p>可以提供商业支持，包括培训和咨询。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> MQ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>redis集群</title>
       <link href="2020/09/12/redis-ji-qun/"/>
       <url>2020/09/12/redis-ji-qun/</url>

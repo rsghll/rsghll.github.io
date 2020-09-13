@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-13T10:51:28.301Z</updated>
+  <updated>2020-09-13T14:21:48.937Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RabbitMQ能为你做些什么？</title>
+    <link href="https://rsghll.github.io/2020/09/13/rabbitmq-neng-zuo-shi-me/"/>
+    <id>https://rsghll.github.io/2020/09/13/rabbitmq-neng-zuo-shi-me/</id>
+    <published>2020-09-13T14:21:02.650Z</published>
+    <updated>2020-09-13T14:21:48.937Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;RabbitMQ能为你做些什么？&quot;&gt;&lt;a href=&quot;#RabbitMQ能为你做些什么？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="MQ" scheme="https://rsghll.github.io/categories/MQ/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>redis集群</title>
