@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-12T13:53:06.771Z</updated>
+  <updated>2020-09-13T10:51:28.301Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>redis主从</title>
-    <link href="https://rsghll.github.io/2020/09/12/redis-zhu-cong/"/>
-    <id>https://rsghll.github.io/2020/09/12/redis-zhu-cong/</id>
+    <title>redis集群</title>
+    <link href="https://rsghll.github.io/2020/09/12/redis-ji-qun/"/>
+    <id>https://rsghll.github.io/2020/09/12/redis-ji-qun/</id>
     <published>2020-09-12T13:50:42.483Z</published>
-    <updated>2020-09-12T13:53:06.771Z</updated>
+    <updated>2020-09-13T10:51:28.301Z</updated>
     
     
       
