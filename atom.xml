@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-13T14:21:48.937Z</updated>
+  <updated>2020-09-14T14:55:16.592Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>装饰器缓存一个函数的结果</title>
+    <link href="https://rsghll.github.io/2020/09/14/zhuang-shi-qi-shi-xian-yi-ge-huan-cun/"/>
+    <id>https://rsghll.github.io/2020/09/14/zhuang-shi-qi-shi-xian-yi-ge-huan-cun/</id>
+    <published>2020-09-14T14:52:41.940Z</published>
+    <updated>2020-09-14T14:55:16.592Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;实现一个简单的装饰器-用来对某个函数的结果进行缓存&quot;&gt;&lt;a href=&quot;#实现一个简单的装饰器-用来对某个函数的结果进行缓存&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="https://rsghll.github.io/categories/python/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>RabbitMQ能为你做些什么？</title>
