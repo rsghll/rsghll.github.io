@@ -388,19 +388,19 @@
                 </a>
                 
                 
-                <a href="/categories/%E8%AF%97%E8%AF%8D%E6%AD%8C%E8%B5%8B/" title="诗词歌赋: 1">
+                <a href="/categories/python/" title="python: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">诗词歌赋
+                            style="background-color: #E8F8F5;">python
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/python/" title="python: 1">
+                <a href="/categories/%E8%AF%97%E8%AF%8D%E6%AD%8C%E8%B5%8B/" title="诗词歌赋: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">python
+                            style="background-color: #FEF9E7;">诗词歌赋
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -431,7 +431,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"Typora","weight":6,"link":"/tags/Typora/"},{"text":"Markdown","weight":6,"link":"/tags/Markdown/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"Typora","weight":6,"link":"/tags/Typora/"},{"text":"Markdown","weight":6,"link":"/tags/Markdown/"},{"text":"python","weight":1,"link":"/tags/python/"}], {
         autoResize: true
     });
 </script>
@@ -464,6 +464,15 @@
                              chip-default "
                             data-tagname="Markdown" style="background-color: #F5EEF8;">Markdown
                         <span class="tag-length">6</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/python/" title="python: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="python" style="background-color: #D5F5E3;">python
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -507,7 +516,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"Container","max":3},{"name":"MQ","max":3},{"name":"SQL","max":3},{"name":"诗词歌赋","max":3},{"name":"python","max":3}],
+            indicator: [{"name":"Container","max":3},{"name":"MQ","max":3},{"name":"SQL","max":3},{"name":"python","max":3},{"name":"诗词歌赋","max":3}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -590,7 +599,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,7],
+                data: [0,0,0,0,0,0,0,0,0,0,0,0,8],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -632,7 +641,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Container","value":1},{"name":"MQ","value":1},{"name":"SQL","value":2},{"name":"诗词歌赋","value":1},{"name":"python","value":1}],
+                data: [{"name":"Container","value":1},{"name":"MQ","value":1},{"name":"SQL","value":2},{"name":"python","value":1},{"name":"诗词歌赋","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -656,7 +665,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Typora","Markdown"]
+                data: ["Typora","Markdown","python"]
             }
         ],
         yAxis: [
@@ -669,7 +678,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [6,6],
+                data: [6,6,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{

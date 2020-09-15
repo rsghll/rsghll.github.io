@@ -5,6 +5,25 @@
     
     <entry>
       <title>mysql主从</title>
+      <link href="2020/09/15/haysatck/"/>
+      <url>2020/09/15/haysatck/</url>
+      
+        <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="搜索引擎原理，Haystack-（倒排索引）原理"><a href="#搜索引擎原理，Haystack-（倒排索引）原理" class="headerlink" title="搜索引擎原理，Haystack （倒排索引）原理"></a>搜索引擎原理，Haystack （倒排索引）原理</h2><ul><li><p>（搜索过程）haystack 还提供一个 包，把分词扔给搜索引擎，告诉我id，haystack 根据id 把对象的集合拿出来</p></li><li><p>Haystack 就是把结构化数据 整成 非结构化数据  喂给收缩引擎。</p></li><li><p>全文检索收索（倒排索引，就是为了提供搜索）</p></li><li><p>中文分词（jieba）</p></li></ul><p>mysql自带模糊查找，效率极低</p><p><img src="C:\Users\YJJ\AppData\Roaming\Typora\typora-user-images\1600158855190.png" alt="1600158855190"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mysql主从</title>
       <link href="2020/09/15/mysql-zhu-cong-fu-zhi/"/>
       <url>2020/09/15/mysql-zhu-cong-fu-zhi/</url>
       

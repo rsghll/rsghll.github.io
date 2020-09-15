@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-15T07:12:32.630Z</updated>
+  <updated>2020-09-15T09:02:03.025Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql主从</title>
+    <link href="https://rsghll.github.io/2020/09/15/haysatck/"/>
+    <id>https://rsghll.github.io/2020/09/15/haysatck/</id>
+    <published>2020-09-15T09:02:28.791Z</published>
+    <updated>2020-09-15T09:02:03.025Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;搜索引擎原理，Haystack-（倒排索引）原理&quot;&gt;&lt;a href=&quot;#搜索引擎原理，Haystack-（倒排索引）原理&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="python" scheme="https://rsghll.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql主从</title>
