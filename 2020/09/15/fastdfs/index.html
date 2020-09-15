@@ -476,8 +476,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li><p>FastDFS 介绍</p>
+                <p>FastDFS 介绍</p>
 <ul>
 <li><h5 id="fastDFS-是以C语言开发的一项开源轻量级分布式文件系统，"><a href="#fastDFS-是以C语言开发的一项开源轻量级分布式文件系统，" class="headerlink" title="fastDFS 是以C语言开发的一项开源轻量级分布式文件系统，"></a>fastDFS 是以C语言开发的一项开源轻量级分布式文件系统，</h5></li>
 <li><h5 id="他对文件进行管理，主要功能有：文件存储，文件同步，文件访问（文件上传-下载）-特别适合以文件为载体的在线服务，如图片网站，视频网站等"><a href="#他对文件进行管理，主要功能有：文件存储，文件同步，文件访问（文件上传-下载）-特别适合以文件为载体的在线服务，如图片网站，视频网站等" class="headerlink" title="他对文件进行管理，主要功能有：文件存储，文件同步，文件访问（文件上传/下载）,特别适合以文件为载体的在线服务，如图片网站，视频网站等"></a>他对文件进行管理，主要功能有：文件存储，文件同步，文件访问（文件上传/下载）,特别适合以文件为载体的在线服务，如图片网站，视频网站等</h5></li>
@@ -486,11 +485,9 @@
 <li><p>可以帮助我们搭建一套高性能的文件服务器集群，并提供文件上传，下载等服务。</p>
 </li>
 </ul>
-</li>
-</ol>
 <p><img src="http://static.oschina.net/uploads/img/201204/20230218_pNXn.jpg" alt="img"></p>
 <h2 id="FastDFS-分为"><a href="#FastDFS-分为" class="headerlink" title="FastDFS 分为:"></a>FastDFS 分为:</h2><p>​    <strong>Client ：</strong></p>
-<p>​        客户端：可以是浏览器，docker容器，django服务</p>
+<p>​        客户端：可以是浏览器，docker容器，django 服务</p>
 <p>​    <strong>Tracker 群</strong></p>
 <p>​            +  监控管理 Storage群</p>
 <p>​        <strong>Storage 群</strong></p>
@@ -514,9 +511,7 @@
 <li>Tracker 看谁闲，告诉你你就找谁</li>
 </ul>
 <p>fastdfs集群:</p>
-<ul>
-<li>注意: 一定要删除  /var/fdfs/ 目录下的文件 (此目录下的文件包含旧的配置, 会造成服务无法访问)</li>
-</ul>
+<p>​     注意: 一定要删除  /var/fdfs/ 目录下的文件 (此目录下的文件包含旧的配置, 会造成服务无法访问)</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 加载docker镜像</span>
 sudo docker load <span class="token operator">-</span>i fastdfs_docker<span class="token punctuation">.</span>tar
 
