@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-14T14:55:16.592Z</updated>
+  <updated>2020-09-15T05:54:24.438Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FastDFS</title>
+    <link href="https://rsghll.github.io/2020/09/15/fastdfs/"/>
+    <id>https://rsghll.github.io/2020/09/15/fastdfs/</id>
+    <published>2020-09-15T03:51:32.693Z</published>
+    <updated>2020-09-15T05:54:24.438Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;FastDFS 介绍&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h5 id=&quot;fastDFS-是以C语言开发的一项开源轻量级分布式文件系统，&quot;&gt;&lt;a href=&quot;#fastDFS-是以C语言开发的一项开源轻量级分布式文件系统，&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Container" scheme="https://rsghll.github.io/categories/Container/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>装饰器缓存一个函数的结果</title>
