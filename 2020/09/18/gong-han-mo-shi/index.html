@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Haysatck, Python">
+    <meta name="keywords" content="工厂模式, Python">
     <meta name="description" content="你笑的时候是真的在笑嘛？">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Haysatck | Python</title>
+    <title>工厂模式 | Python</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Haysatck</h1>
+                    <h1 class="description center-align post-title">工厂模式</h1>
                 </div>
             </div>
         </div>
@@ -431,14 +431,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/Typora/">
+                                <span class="chip bg-color">Typora</span>
+                            </a>
+                        
+                            <a href="/tags/Markdown/">
+                                <span class="chip bg-color">Markdown</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -447,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-15
+                    2020-09-18
                 </div>
                 
 
@@ -463,18 +476,38 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="搜索引擎原理，Haystack-（倒排索引）原理"><a href="#搜索引擎原理，Haystack-（倒排索引）原理" class="headerlink" title="搜索引擎原理，Haystack （倒排索引）原理"></a>搜索引擎原理，Haystack （倒排索引）原理</h2><ul>
-<li><p>（搜索过程）haystack 还提供一个 包，把分词扔给搜索引擎，告诉我id，haystack 根据id 把对象的集合拿出来</p>
-</li>
-<li><p>Haystack 就是把结构化数据 整成 非结构化数据  喂给收缩引擎。</p>
-</li>
-<li><p>全文检索收索（倒排索引，就是为了提供搜索）</p>
-</li>
-<li><p>中文分词（jieba）</p>
-</li>
-</ul>
-<p>mysql自带模糊查找，效率极低</p>
-<p><img src="C:\Users\YJJ\AppData\Roaming\Typora\typora-user-images\1600158855190.png" alt="1600158855190"></p>
+                <h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">WeiBo</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>slef<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'新浪三方登录'</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">DingDing</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>slef<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'钉钉三方登录'</span>
+
+<span class="token comment" spellcheck="true"># 用那个调那个</span>
+weibo <span class="token operator">=</span> WeiBo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+dingding <span class="token operator">=</span> DingDing<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>weibo<span class="token punctuation">)</span></code></pre>
+<ol>
+<li>现在只有两个，明天添加微信，后天做一个QQ等等，我们不知道社交账号什么时候完结，我们就得做无数个类，会被累死，一个两个没问题，N 多个时，就不知实列化那个了，这种方式也可以做，我一千个类判断一下类名就行了，实际上可以，但不好维护，如果是一个调用方，认证部门做三方，如果是支付部门的，他要来调用类，一看这么多类，他就不知道调用那个，就得自己去找，很麻烦。</li>
+<li>这时候就要用设计模式得工厂模式，对对象的创建过程抽象化，让用户指定自己想要得对象，而不必关心对象的实列化过程，换句话说，就是把实列化过程隐藏起来，用户只需要通过固定的接口来调用这个类里边的具体方法，就ok了，不需要考虑调用那个类，怎么实列化对象他就不关心了，跟他没关系了，这样就可以解耦了，降低耦合度，类自己写的，没关系，很好调用，如果是其他人，他就得先熟悉你的代码，这个过程省略，就叫工厂模式，主要降低维护得复杂性，</li>
+</ol>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 工厂模式</span>
+<span class="token keyword">class</span> <span class="token class-name">SimpleFactory</span><span class="token punctuation">:</span>
+    @staticmethod <span class="token comment" spellcheck="true"># 不需要实列化，直接调用</span>
+    <span class="token keyword">def</span> <span class="token function">ThirdLogin</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 不写self 不是类方法</span>
+        <span class="token keyword">if</span> name <span class="token operator">==</span> <span class="token string">'weibo'</span><span class="token punctuation">:</span>
+            rerurn WieBo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+         <span class="token keyword">elif</span> name <span class="token operator">==</span> <span class="token string">'DingDing'</span><span class="token punctuation">:</span>
+
+ dinding <span class="token operator">=</span> SimpleFactory<span class="token punctuation">.</span>ThirdLogin<span class="token punctuation">(</span><span class="token string">'dingding'</span><span class="token punctuation">)</span></code></pre>
+<ol>
+<li>不需要实列化对象，使用静态方法省略。</li>
+<li>我也不考虑他是那个类里是“顶顶”，我只需要传参，里边的逻辑不用管</li>
+<li>只要给我一个参数，你不用管，我也不用管，我们各自为战，实现了解耦</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -508,7 +541,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">mldsh</a>
+                    <a href="/about" rel="external nofollow noreferrer">刘昊</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -518,7 +551,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://rsghll.github.io/2020/09/15/haysatck/">https://rsghll.github.io/2020/09/15/haysatck/</a>
+                    <a href="https://rsghll.github.io/2020/09/18/gong-han-mo-shi/">https://rsghll.github.io/2020/09/18/gong-han-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -531,7 +564,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">mldsh</a>
+                    <a href="/about" target="_blank">刘昊</a>
                     !
                 </span>
             </div>
@@ -556,8 +589,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/Typora/">
+                                    <span class="chip bg-color">Typora</span>
+                                </a>
+                            
+                                <a href="/tags/Markdown/">
+                                    <span class="chip bg-color">Markdown</span>
                                 </a>
                             
                         </div>
@@ -725,9 +762,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/09/18/gong-han-mo-shi/">
                     <div class="card-image">
@@ -739,16 +777,15 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-						<div class="summary block-with-text">
-							
-								这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-							
-						</div>
-
+                    <div class="summary block-with-text">
+                        
+                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                        
+                    </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -761,6 +798,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -783,13 +821,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/15/mysql-zhu-cong-fu-zhi/">
+                <a href="/2020/09/15/haysatck/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="mysql主从">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Haysatck">
                         
-                        <span class="card-title">mysql主从</span>
+                        <span class="card-title">Haysatck</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -804,12 +842,8 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/SQL/" class="post-category">
-                                    SQL
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            mldsh
                             
                         </span>
                     </div>
@@ -817,12 +851,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Typora/">
-                        <span class="chip bg-color">Typora</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
