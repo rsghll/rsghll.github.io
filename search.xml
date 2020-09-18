@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>mysql</title>
+      <link href="2020/09/18/mysql-yin-qing-todo/"/>
+      <url>2020/09/18/mysql-yin-qing-todo/</url>
+      
+        <content type="html"><![CDATA[<h3 id="mysql-引擎"><a href="#mysql-引擎" class="headerlink" title="mysql 引擎"></a>mysql 引擎</h3><p>​        InnoDB 是事物型数据库首选引擎，支持事物安全表（ACID）,支持锁和外键，innoDB是默认的mysql引擎，</p><ul><li><p>innoDB 给mysql提供了具有提交，回滚和崩溃恢复能力的事物安全存储引擎。</p></li><li><p>innoDB 中存在表锁和行锁，不过行锁是在命中索引的情况下才会起作用。</p></li><li><p>innoDB 支持事物，且支持四种隔离级别（读未提交读，读已提交读，可重复读，串行读），默认的为可重复读。</p></li><li><p>如果要提供提交，回滚，崩溃恢复能力的事物安全（ACID）能力，并要求实现并发控制，innoDB是一个好的选择。</p></li></ul><p>​    <strong>MyISAM存储引擎</strong></p><ul><li>他是在 Web,数据存储和其他应用环境下最常用的存储引擎之一，myisam拥有较高的插入，查询速度。</li><li>myisam 只支持表锁，且不支持事物，在读取数据方面的性能很高。</li><li>如果数据要用来插入和查询记录，则myisam引擎能提供较高的处理效率。</li></ul><p><strong>存储结构</strong></p><p>​    innoDB 和 MYISAM 都是用B+Tree 来存储数据的</p><p><strong>使用哪一种引擎需要灵活选择，一个数据库中多个表可以使用不同引擎可以满足各种性能和实际需求，使用何使的存储引擎，将会提高整个数据库的性能</strong></p><p>​    </p><h3 id="Mysql-的索引"><a href="#Mysql-的索引" class="headerlink" title="Mysql 的索引"></a>Mysql 的索引</h3><p>​      索引是一种用来实现MYSQL 高效获取数据的数据结构。</p><ul><li>我们通常所说的在某个字段上建立索引，意思就是让MYSQL 对该字段一索引这种数据结构来存储，然后查找的时候就有对应的查找算法。</li><li>建索引的根本目的就是为了查找的优化，特别是当数据很庞大的时候，一般的查找算法有顺序结构，折半查找，快速查找等。</li><li>但是每种查找算法都是只能应用于特定的数据结构之上，列入顺序查找依赖于顺序结构，折半查找通过二叉查找树或红黑树实现二分搜索，因此在数据之外，数据库系统还在维护这满足特定查找算法的数据结构。</li><li>这些数据结构以某种方式引用数据，这样就可以在数据结构上实现高级查找算法，这种数据结构就是索引。</li></ul><h3 id="mysql-锁"><a href="#mysql-锁" class="headerlink" title="mysql 锁"></a>mysql 锁</h3><p>​            表级锁：</p><p>​                    </p><pre><code>Todo</code></pre><p>​            行级锁：</p><p>​                排他锁，又称写锁，不能与其他锁并存，如果一个事物获取了该数据的排他锁，不能在加其他锁了，可读可写，不能在加其他锁，但你可以使用简单的查询，</p><p>​                共享锁，也称为读锁，多个事物对同一事物共享一把锁，，只能读不能修改，普通查询不会有任何锁机制</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> SQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>工厂模式</title>
       <link href="2020/09/18/gong-han-mo-shi/"/>
       <url>2020/09/18/gong-han-mo-shi/</url>
