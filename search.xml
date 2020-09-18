@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>权限系统</title>
+      <link href="2020/09/19/quan-xian-xi-tong/"/>
+      <url>2020/09/19/quan-xian-xi-tong/</url>
+      
+        <content type="html"><![CDATA[<h3 id="权限系统"><a href="#权限系统" class="headerlink" title="权限系统"></a>权限系统</h3><p><strong>ACL</strong> (基于用户的)</p><ol><li><p>ACL 权限系统 （三张表）（古老的权限体系）</p><ol><li>简单方便 只针对用户，（小公司）</li></ol></li></ol><pre class=" language-python"><code class="language-python">用户表：id ，用户名，<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>用户<span class="token operator">-</span>权限table：有用户管理的 就把用户id添加到 这个表里，权限表： 节点表  <span class="token operator">-</span><span class="token operator">-</span> 用户管理，课程管理，标签管理</code></pre><ol start="2"><li>权限系统一开始不是针对角色的，只针对用户的，（大公司不用ACL）</li></ol><h3 id="RBAC-权限系统（角色）"><a href="#RBAC-权限系统（角色）" class="headerlink" title="RBAC  权限系统（角色）"></a><strong>RBAC</strong>  权限系统（角色）</h3><p>​    当人数非常大的，比较庞杂，RBAC就产生出来了</p><pre><code>+ 不针对某个用户授权，针对角色+ 给用户分配某个角色，针对角色授权+ 可以把role_id 放到 jwt里 就不用四表联查了，</code></pre><pre class=" language-python"><code class="language-python">用户表：role_id<span class="token punctuation">(</span>角色id<span class="token punctuation">)</span>用户角色：（一对多不用创建，多对多需要）角色表： 超级管理员，课程管理员，用户管理员角色<span class="token operator">-</span>权限权限表： 用户管理页面 课程管理员，标签管理员</code></pre><h3 id="ABac-权限系统-基于属性"><a href="#ABac-权限系统-基于属性" class="headerlink" title="ABac 权限系统 (基于属性)"></a><strong>ABac</strong> 权限系统 (基于属性)</h3><pre><code> 更加细致</code></pre><p>​    一个工牌 只能上午 10 到 晚上6 能在公司，添加一个属性即可，</p><pre><code>用户表：属性：班主任 10点 教室（任务，时间，地点）属性-权限权限表</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 权限 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mysql</title>
       <link href="2020/09/18/mysql-yin-qing-todo/"/>
       <url>2020/09/18/mysql-yin-qing-todo/</url>

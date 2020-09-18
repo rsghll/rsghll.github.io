@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-18T08:17:10.857Z</updated>
+  <updated>2020-09-18T16:12:47.600Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>权限系统</title>
+    <link href="https://rsghll.github.io/2020/09/19/quan-xian-xi-tong/"/>
+    <id>https://rsghll.github.io/2020/09/19/quan-xian-xi-tong/</id>
+    <published>2020-09-18T16:11:55.319Z</published>
+    <updated>2020-09-18T16:12:47.600Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;权限系统&quot;&gt;&lt;a href=&quot;#权限系统&quot; class=&quot;headerlink&quot; title=&quot;权限系统&quot;&gt;&lt;/a&gt;权限系统&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;ACL&lt;/strong&gt; (基于用户的)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;ACL 权限系统</summary>
+        
+      
+    
+    
+    
+    <category term="权限" scheme="https://rsghll.github.io/categories/%E6%9D%83%E9%99%90/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql</title>
