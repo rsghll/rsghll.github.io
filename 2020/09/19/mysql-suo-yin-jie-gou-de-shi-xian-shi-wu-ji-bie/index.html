@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="权限系统, Python">
+    <meta name="keywords" content="Mysql 索引结构的实现+事物级别, Python">
     <meta name="description" content="你笑的时候是真的在笑嘛？">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>权限系统 | Python</title>
+    <title>Mysql 索引结构的实现+事物级别 | Python</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,7 +314,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">权限系统</h1>
+                    <h1 class="description center-align post-title">Mysql 索引结构的实现+事物级别</h1>
                 </div>
             </div>
         </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%9D%83%E9%99%90/" class="post-category">
-                                权限
+                            <a href="/categories/SQL/" class="post-category">
+                                SQL
                             </a>
                         
                     </div>
@@ -460,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-18
+                    2020-09-19
                 </div>
                 
 
@@ -476,46 +476,118 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="权限系统"><a href="#权限系统" class="headerlink" title="权限系统"></a>权限系统</h3><p><strong>ACL</strong> (基于用户的)</p>
-<ol>
-<li><p>ACL 权限系统 （三张表）（古老的权限体系）</p>
-<ol>
-<li>简单方便 只针对用户，（小公司）</li>
-</ol>
+                <h3 id="Mysql-索引结构的实现"><a href="#Mysql-索引结构的实现" class="headerlink" title="Mysql 索引结构的实现"></a>Mysql 索引结构的实现</h3><h4 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h4><p>​        索引（Index）是帮助数据库高效获取数据的数据结构。索引是在基于数据库表创建的，他包含一个表中某些列的值以及记录对应的地址，并且把这些值存储在一个数据结构中，最常见的就是使用哈希表，B+树做为索引。</p>
+<h4 id="Mysql-索引的数据结构：B-Tree"><a href="#Mysql-索引的数据结构：B-Tree" class="headerlink" title="Mysql 索引的数据结构：B+Tree"></a>Mysql 索引的数据结构：B+Tree</h4><p>​        索引非常大，不能全部存储到内存中，索引是以索引文件的形式存储在磁盘上，索引查询会产生磁盘I/O的消耗，索引的优劣重要指标就是I/O 的 操作次数。</p>
+<p>​        尽量减少磁盘的 I/O 可以提高效率， </p>
+<p>​    </p>
+<p><strong>Mysql索引的数据结构之所以选择B+树而不是B树，是因为它内节点不存储data，这样一个节点就可以存储更多的key。</strong></p>
+<p><strong>Mysql两个存储引擎MyISAM和InnoDB的索引</strong>区别：</p>
+<p><img src="https://img-blog.csdn.net/20180905234629239?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NDYyMzg3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p><img src="https://img-blog.csdn.net/20180905234814946?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NDYyMzg3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>一是主索引的区别，InnoDB的数据文件就是索引文件。而 MyISAM 的索引和数据的分开的。</p>
+<p>二是辅助索引的区别：InnoDB的辅助索引data域存储相应记录主键的值而不是地址，而MYISAM 的辅助索引和主索引没有多大区别。</p>
+<h2 id="MySQL中MyISAM与InnoDB区别及选择"><a href="#MySQL中MyISAM与InnoDB区别及选择" class="headerlink" title="MySQL中MyISAM与InnoDB区别及选择"></a>MySQL中MyISAM与InnoDB区别及选择</h2><table>
+<thead>
+<tr>
+<th><strong>InnoDB</strong></th>
+<th><strong>MyISAM</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>支持事务处理</td>
+<td>不支持事务，回滚将造成不完全回滚，不具有原子性</td>
+</tr>
+<tr>
+<td>支持外键</td>
+<td>不支持外键</td>
+</tr>
+<tr>
+<td>支持行锁</td>
+<td>支持全文搜索</td>
+</tr>
+<tr>
+<td>不保存表的具体行数，扫描表来计算有多少行</td>
+<td>保存表的具体行数,不带where时，直接返回保存的行数</td>
+</tr>
+<tr>
+<td>DELETE 表时，是一行一行的删除</td>
+<td>DELETE 表时，先drop表，然后重建表</td>
+</tr>
+<tr>
+<td>InnoDB中必须包含AUTO_INCREMENT类型字段的索引</td>
+<td>MyISAM中可以使AUTO_INCREMENT类型字段建立联合索引</td>
+</tr>
+<tr>
+<td>表格很难被压缩</td>
+<td>表格可以被压缩</td>
+</tr>
+<tr>
+<td>跨平台可直接拷贝使用</td>
+<td>跨平台不可直接拷贝使用</td>
+</tr>
+</tbody></table>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结</strong>：</h2><p>​     在大数据量，高并发量的互联网业务场景下，对于MyISAM和InnoDB</p>
+<ul>
+<li><p>有where条件，count(*)两个存储引擎性能差不多</p>
 </li>
-</ol>
-<pre class=" language-python"><code class="language-python">用户表：id ，用户名，<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
-
-用户<span class="token operator">-</span>权限table：有用户管理的 就把用户id添加到 这个表里，
-
-权限表： 节点表  <span class="token operator">-</span><span class="token operator">-</span> 用户管理，课程管理，标签管理</code></pre>
-<ol start="2">
-<li>权限系统一开始不是针对角色的，只针对用户的，（大公司不用ACL）</li>
-</ol>
-<h3 id="RBAC-权限系统（角色）"><a href="#RBAC-权限系统（角色）" class="headerlink" title="RBAC  权限系统（角色）"></a><strong>RBAC</strong>  权限系统（角色）</h3><p>​    当人数非常大的，比较庞杂，RBAC就产生出来了</p>
-<pre><code>+ 不针对某个用户授权，针对角色
-+ 给用户分配某个角色，针对角色授权
-+ 可以把role_id 放到 jwt里 就不用四表联查了，</code></pre>
-<pre class=" language-python"><code class="language-python">用户表：role_id<span class="token punctuation">(</span>角色id<span class="token punctuation">)</span>
-
-用户角色：（一对多不用创建，多对多需要）
-
-角色表： 超级管理员，课程管理员，用户管理员
-
-角色<span class="token operator">-</span>权限
-
-权限表： 用户管理页面 课程管理员，标签管理员</code></pre>
-<h3 id="ABac-权限系统-基于属性"><a href="#ABac-权限系统-基于属性" class="headerlink" title="ABac 权限系统 (基于属性)"></a><strong>ABac</strong> 权限系统 (基于属性)</h3><pre><code> 更加细致</code></pre>
-<p>​    一个工牌 只能上午 10 到 晚上6 能在公司，添加一个属性即可，</p>
-<pre><code>用户表：
-
-
-
-属性：班主任 10点 教室（任务，时间，地点）
-
-属性-权限
-
-权限表</code></pre>
+<li><p>不要使用全文索引，应当使用《<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;mid=2651959917&amp;idx=1&amp;sn=8faeae7419a756b0c355af2b30c255df&amp;chksm=bd2d07b18a5a8ea75f16f7e98ea897c7e7f47a0441c64bdaef8445a2100e0bdd2a7de99786c0&amp;scene=21#wechat_redirect">索引外置</a>》的设计方案</p>
+</li>
+<li><p>事务影响性能，强一致性要求才使用事务</p>
+</li>
+<li><p>不用外键，由应用程序来保证完整性</p>
+</li>
+<li><p>不命中索引，InnoDB也不能用行锁</p>
+<p>innoDB 是非常适合互联网业务的存储引擎，其多版本并发控制，快照读机制，能够通过读取回滚段中数据的历史版本，在事物读取记录的时候不用加锁，以支持超高的并发。MyISAM 相对简单所以最好在效率上要优于InnoDB。如果系统读多，写少，对原子性要求低的情况下，MyISAM 是最好的选着。且MyISAM 恢复速度快。可直接备份覆盖恢复。如果系统读少，写多的时候，尤其是并发写入高的时候，innoDB就是首选了。</p>
+<p>两种类型都有自己的优点，选着那个完全要看自己的实际选着。</p>
+</li>
+</ul>
+<h2 id="InnoDB-四种事务隔离级别"><a href="#InnoDB-四种事务隔离级别" class="headerlink" title="InnoDB 四种事务隔离级别"></a>InnoDB 四种事务隔离级别</h2><p><strong>InnoDB默认是可重复读的（REPEATABLE READ）</strong></p>
+<p>修改全局默认的事务级别，在my.inf文件的[mysqld]节里类似如下设置该选项（不推荐）</p>
+<pre class=" language-java"><code class="language-java">transaction<span class="token operator">-</span>isolation <span class="token operator">=</span> <span class="token punctuation">{</span>READ<span class="token operator">-</span>UNCOMMITTED <span class="token operator">|</span> READ<span class="token operator">-</span>COMMITTED <span class="token operator">|</span> REPEATABLE<span class="token operator">-</span>READ <span class="token operator">|</span> SERIALIZABLE<span class="token punctuation">}</span></code></pre>
+<p> <strong>四种隔离级别说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">隔离级别</th>
+<th align="left">脏读（Dirty Read）</th>
+<th align="left">不可重复读（NonRepeatable Read）</th>
+<th align="left">幻读（Phantom Read）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">未提交读（Read uncommitted）</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+</tr>
+<tr>
+<td align="left">已提交读（Read committed）</td>
+<td align="left">不可能</td>
+<td align="left">可能</td>
+<td align="left">可能</td>
+</tr>
+<tr>
+<td align="left">可重复读（Repeatable read）</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+<td align="left">可能</td>
+</tr>
+<tr>
+<td align="left">可串行化（SERIALIZABLE）</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+<td align="left">不可能</td>
+</tr>
+</tbody></table>
+<p>脏读 :一个事务读取到另一事务未提交的更新数据</p>
+<p>不可重复读 : 在同一事务中,多次读取同一数据返回的结果有所不同</p>
+<p>幻读 :一个事务读到另一个事务已提交的insert数据</p>
+<p><strong>1.脏读</strong></p>
+<p>A事务读取B事务尚未提交的更改数据，并在这个数据的基础上进行操作，这时候如果事务B回滚，那么A事务读到的数据是不被承认的。例如常见的取款事务和转账事务：<br><img src="https://img-blog.csdn.net/20170731153307604?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3RhcmxoMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>2.不可重复读</strong></p>
+<p>不可重复读是指A事务读取了B事务已经提交的更改数据。假如A在取款事务的过程中，B往该账户转账100，A两次读取的余额发生不一致。</p>
+<p><strong>3.幻读</strong></p>
+<p>A事务读取B事务提交的新增数据,会引发幻读问题。幻读一般发生在计算统计数据的事务中，例如银行系统在同一个事务中两次统计存款账户的总金额，在两次统计中，刚好新增了一个存款账户，存入了100，这时候两次统计的总金额不一致。<br><img src="https://img-blog.csdn.net/20170731153407212?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3RhcmxoMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>注意：不可重复读和幻读的区别是：前者是指读到了已经提交的事务的更改数据（修改或删除），后者是指读到了其他已经提交事务的新增数据。对于这两种问题解决采用不同的办法，防止读到更改数据，只需对操作的数据添加行级锁，防止操作中的数据发生变化；二防止读到新增数据，往往需要添加表级锁，将整张表锁定，防止新增数据（oracle采用多版本数据的方式实现）。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -559,7 +631,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://rsghll.github.io/2020/09/19/quan-xian-xi-tong/">https://rsghll.github.io/2020/09/19/quan-xian-xi-tong/</a>
+                    <a href="https://rsghll.github.io/2020/09/19/mysql-suo-yin-jie-gou-de-shi-xian-shi-wu-ji-bie/">https://rsghll.github.io/2020/09/19/mysql-suo-yin-jie-gou-de-shi-xian-shi-wu-ji-bie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -770,9 +842,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/09/19/mysql-suo-yin-jie-gou-de-shi-xian-shi-wu-ji-bie/">
                     <div class="card-image">
@@ -784,16 +857,15 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-						<div class="summary block-with-text">
-							
-								这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-							
-						</div>
-
+                    <div class="summary block-with-text">
+                        
+                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                        
+                    </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -806,6 +878,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -828,13 +901,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/18/mysql-yin-qing-todo/">
+                <a href="/2020/09/19/quan-xian-xi-tong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="mysql">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="权限系统">
                         
-                        <span class="card-title">mysql</span>
+                        <span class="card-title">权限系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -851,8 +924,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SQL/" class="post-category">
-                                    SQL
+                            <a href="/categories/%E6%9D%83%E9%99%90/" class="post-category">
+                                    权限
                                 </a>
                             
                             

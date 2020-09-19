@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-18T16:12:47.600Z</updated>
+  <updated>2020-09-19T15:49:01.257Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mysql 索引结构的实现+事物级别</title>
+    <link href="https://rsghll.github.io/2020/09/19/mysql-suo-yin-jie-gou-de-shi-xian-shi-wu-ji-bie/"/>
+    <id>https://rsghll.github.io/2020/09/19/mysql-suo-yin-jie-gou-de-shi-xian-shi-wu-ji-bie/</id>
+    <published>2020-09-19T15:47:43.926Z</published>
+    <updated>2020-09-19T15:49:01.257Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Mysql-索引结构的实现&quot;&gt;&lt;a href=&quot;#Mysql-索引结构的实现&quot; class=&quot;headerlink&quot; title=&quot;Mysql 索引结构的实现&quot;&gt;&lt;/a&gt;Mysql 索引结构的实现&lt;/h3&gt;&lt;h4 id=&quot;什么是索引&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="SQL" scheme="https://rsghll.github.io/categories/SQL/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>权限系统</title>
