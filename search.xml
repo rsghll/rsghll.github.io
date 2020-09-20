@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>ORM</title>
+      <link href="2020/09/20/django-orm/"/>
+      <url>2020/09/20/django-orm/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Django-ORM"><a href="#Django-ORM" class="headerlink" title="Django ORM"></a>Django ORM</h2><p>Django 模型使用自带的 ORM。</p><p>对象关系映射（Object Relational Mapping，简称 ORM ）用于实现面向对象编程语言里不同类型系统的数据之间的转换。</p><p>ORM 在业务逻辑层和数据库层之间充当了桥梁的作用。</p><p>ORM 是通过使用描述对象和数据库之间的映射的元数据，将程序中的对象自动持久化到数据库中。</p><p><img src="https://www.runoob.com/wp-content/uploads/2020/05/django-orm1.png" alt="img"></p><p>使用 ORM 的好处：</p><ul><li>提高开发效率。</li><li>不同数据库可以平滑切换。</li></ul><p>使用 ORM 的缺点：</p><ul><li>ORM 代码转换为 SQL 语句时，需要花费一定的时间，执行效率会有所降低。</li><li>长期写 ORM 代码，会降低编写 SQL 语句的能力。</li></ul><p>ORM 解析过程:</p><ul><li>1、ORM 会将 Python 代码转成为 SQL 语句。</li><li>2、SQL 语句通过 pymysql 传送到数据库服务端。</li><li>3、在数据库中执行 SQL 语句并将结果返回。</li></ul><p>ORM 对应关系表：</p><p><img src="https://www.runoob.com/wp-content/uploads/2020/05/orm-object.png" alt="img"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Django </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mysql 索引结构的实现+事物级别</title>
       <link href="2020/09/19/mysql-suo-yin-jie-gou-de-shi-xian-shi-wu-ji-bie/"/>
       <url>2020/09/19/mysql-suo-yin-jie-gou-de-shi-xian-shi-wu-ji-bie/</url>
