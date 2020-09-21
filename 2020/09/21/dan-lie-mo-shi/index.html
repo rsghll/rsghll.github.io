@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ORM, Python">
+    <meta name="keywords" content="权限系统, Python">
     <meta name="description" content="你笑的时候是真的在笑嘛？">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ORM | Python</title>
+    <title>权限系统 | Python</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ORM</h1>
+                    <h1 class="description center-align post-title">权限系统</h1>
                 </div>
             </div>
         </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Django/" class="post-category">
-                                Django
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
                             </a>
                         
                     </div>
@@ -460,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-20
+                    2020-09-21
                 </div>
                 
 
@@ -476,29 +476,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Django-ORM"><a href="#Django-ORM" class="headerlink" title="Django ORM"></a>Django ORM</h2><p>Django 模型使用自带的 ORM。</p>
-<p>对象关系映射（Object Relational Mapping，简称 ORM ）用于实现面向对象编程语言里不同类型系统的数据之间的转换。</p>
-<p>ORM 在业务逻辑层和数据库层之间充当了桥梁的作用。</p>
-<p>ORM 是通过使用描述对象和数据库之间的映射的元数据，将程序中的对象自动持久化到数据库中。</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2020/05/django-orm1.png" alt="img"></p>
-<p>使用 ORM 的好处：</p>
-<ul>
-<li>提高开发效率。</li>
-<li>不同数据库可以平滑切换。</li>
-</ul>
-<p>使用 ORM 的缺点：</p>
-<ul>
-<li>ORM 代码转换为 SQL 语句时，需要花费一定的时间，执行效率会有所降低。</li>
-<li>长期写 ORM 代码，会降低编写 SQL 语句的能力。</li>
-</ul>
-<p>ORM 解析过程:</p>
-<ul>
-<li>1、ORM 会将 Python 代码转成为 SQL 语句。</li>
-<li>2、SQL 语句通过 pymysql 传送到数据库服务端。</li>
-<li>3、在数据库中执行 SQL 语句并将结果返回。</li>
-</ul>
-<p>ORM 对应关系表：</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2020/05/orm-object.png" alt="img"></p>
+                <ol>
+<li><h3 id="单列模式"><a href="#单列模式" class="headerlink" title="单列模式"></a>单列模式</h3><p>​    单列模式 是一种常用的软件设计模式，该模式的主要目的是确保某一个类只有一个实列存在。当你希望在整个系统中，某个类只能出现一个实列时，单列对象就能派上用场。</p>
+<p>​    其实，python 的模式就是天然的单列模式，应为模块在第一次导入时，会生成.pyc文件。当第二次导入时，就会直接加载.pyc文件，而不会在执行模块代码。因此，我们只需把相关的函数和数据定义在一个模块中，就可以获得一个单列对象。</p>
+</li>
+</ol>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">SingLeton</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+singleton <span class="token operator">=</span> SingLeton<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+直接在其他文件中导入此文件中的对象，就是一个单列模式的对象
+
+<span class="token keyword">from</span> a <span class="token keyword">import</span> singleton</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -542,7 +533,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://rsghll.github.io/2020/09/20/django-orm/">https://rsghll.github.io/2020/09/20/django-orm/</a>
+                    <a href="https://rsghll.github.io/2020/09/21/dan-lie-mo-shi/">https://rsghll.github.io/2020/09/21/dan-lie-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -753,9 +744,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/09/21/dan-lie-mo-shi/">
                     <div class="card-image">
@@ -767,16 +759,15 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-						<div class="summary block-with-text">
-							
-								这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-							
-						</div>
-
+                    <div class="summary block-with-text">
+                        
+                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                        
+                    </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -789,6 +780,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -811,13 +803,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/19/mysql-suo-yin-jie-gou-de-shi-xian-shi-wu-ji-bie/">
+                <a href="/2020/09/20/django-orm/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Mysql 索引结构的实现+事物级别">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="ORM">
                         
-                        <span class="card-title">Mysql 索引结构的实现+事物级别</span>
+                        <span class="card-title">ORM</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -828,14 +820,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SQL/" class="post-category">
-                                    SQL
+                            <a href="/categories/Django/" class="post-category">
+                                    Django
                                 </a>
                             
                             

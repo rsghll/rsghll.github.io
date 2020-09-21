@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-20T07:51:48.729Z</updated>
+  <updated>2020-09-21T03:51:33.185Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>权限系统</title>
+    <link href="https://rsghll.github.io/2020/09/21/dan-lie-mo-shi/"/>
+    <id>https://rsghll.github.io/2020/09/21/dan-lie-mo-shi/</id>
+    <published>2020-09-21T03:49:56.884Z</published>
+    <updated>2020-09-21T03:51:33.185Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;h3 id=&quot;单列模式&quot;&gt;&lt;a href=&quot;#单列模式&quot; class=&quot;headerlink&quot; title=&quot;单列模式&quot;&gt;&lt;/a&gt;单列模式&lt;/h3&gt;&lt;p&gt;​    单列模式</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://rsghll.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ORM</title>
     <link href="https://rsghll.github.io/2020/09/20/django-orm/"/>
     <id>https://rsghll.github.io/2020/09/20/django-orm/</id>
     <published>2020-09-20T07:51:02.199Z</published>
-    <updated>2020-09-20T07:51:48.729Z</updated>
+    <updated>2020-09-20T15:23:35.190Z</updated>
     
     
       
