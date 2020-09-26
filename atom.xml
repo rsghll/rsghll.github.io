@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-21T04:02:58.655Z</updated>
+  <updated>2020-09-25T12:54:36.781Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://rsghll.github.io/2020/09/26/ti-ku/"/>
+    <id>https://rsghll.github.io/2020/09/26/ti-ku/</id>
+    <published>2020-09-26T01:53:44.364Z</published>
+    <updated>2020-09-25T12:54:36.781Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;1-What-is-the-difference-between-list-and-tuples-in-python-？（-列-表-和-元-组-有-什-么-区-别-）&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>单列模式</title>
@@ -284,6 +305,27 @@
     <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
     
     <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://rsghll.github.io/2020/09/14/django-flask/"/>
+    <id>https://rsghll.github.io/2020/09/14/django-flask/</id>
+    <published>2020-09-14T10:37:35.007Z</published>
+    <updated>2020-09-26T01:52:43.618Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Django-amp-Flask&quot;&gt;&lt;a href=&quot;#Django-amp-Flask&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
     
   </entry>
   
