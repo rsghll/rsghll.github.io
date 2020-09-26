@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-26T04:47:57.272Z</updated>
+  <updated>2020-09-26T06:51:33.608Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Websocket</title>
+    <link href="https://rsghll.github.io/2020/09/26/websocket/"/>
+    <id>https://rsghll.github.io/2020/09/26/websocket/</id>
+    <published>2020-09-26T05:07:33.193Z</published>
+    <updated>2020-09-26T06:51:33.608Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Websocket&quot;&gt;&lt;a href=&quot;#Websocket&quot; class=&quot;headerlink&quot; title=&quot;Websocket&quot;&gt;&lt;/a&gt;Websocket&lt;/h2&gt;&lt;p&gt;​    WebSocket 协议本质上是一个&lt;strong&gt;基于 TCP</summary>
+        
+      
+    
+    
+    
+    <category term="socket" scheme="https://rsghll.github.io/categories/socket/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>微信三方登录流程</title>
