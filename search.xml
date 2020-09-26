@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>微信三方登录流程</title>
+      <link href="2020/09/26/wei-xin/"/>
+      <url>2020/09/26/wei-xin/</url>
+      
+        <content type="html"><![CDATA[<h3 id="微信三方登录"><a href="#微信三方登录" class="headerlink" title="微信三方登录"></a>微信三方登录</h3><h3 id="OAUTH-2-0"><a href="#OAUTH-2-0" class="headerlink" title="OAUTH 2.0"></a>OAUTH 2.0</h3><p>​    OAUTH 是一种开放的协议，为桌面程序或者基于BS的web应用提供了一种简单，标准的方式访问去访问需要用户授权的API服务。</p><h4 id="简单的来说，OAUTH认证授权就三个步骤，三句话可以概括："><a href="#简单的来说，OAUTH认证授权就三个步骤，三句话可以概括：" class="headerlink" title="简单的来说，OAUTH认证授权就三个步骤，三句话可以概括："></a>简单的来说，OAUTH认证授权就三个步骤，三句话可以概括：</h4><pre><code>1. 获取未授权的Request Token 2. 获取用户授权的Request Token 3. 用授权的Request Token换取Access Token</code></pre><ol><li>当我们的网站需接入微信登陆时，会引导用户（通过微信logo或其他图示）跳转到微信的登陆授权页面，此时把之前申请的appID带给登陆授权页面。</li><li>用户确认后得到授权，微信会返回一个临时的code给我们，通过code来确认是否微信登录了，code 作为换取access_token的票据，每次授权带上的code不一样，</li><li>接受到code后，并取出，再次向微信发起请求，带上code从微信服务器获取access_token，Openid</li><li>我们网站获取到access_token后就可以调用微信提供的接口了，比如获取用户信息等，则此时开发者可以通过access_token和openid拉取用户信息了。</li></ol><p><strong>总结一下，整个登录流程为获取Code-&gt;用Code获取AccessToken和OpenId（和UnionId）-&gt;用AccessToken获取微信用户的微信信息。</strong></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 三方登录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="2020/09/26/ti-ku/"/>
       <url>2020/09/26/ti-ku/</url>
