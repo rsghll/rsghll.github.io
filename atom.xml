@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-09-28T12:55:18.984Z</updated>
+  <updated>2020-09-30T09:48:59.383Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -21,18 +21,17 @@
     <link href="https://rsghll.github.io/2020/09/28/mian-shi-bi-ji/"/>
     <id>https://rsghll.github.io/2020/09/28/mian-shi-bi-ji/</id>
     <published>2020-09-28T12:47:43.322Z</published>
-    <updated>2020-09-28T12:55:18.984Z</updated>
+    <updated>2020-09-30T09:48:59.383Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;工厂模式&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;把创建对象的过程抽象化，用户指定自己想要的对象，不需要知道实列过程，换句话说，隐藏实列化过程，用户只需要通过固定的接口来调用这个类里边的具体方法。&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;三方登录&lt;/p&gt;
-&lt;p&gt;http响应码&lt;/p&gt;
-&lt;pr</summary>
+    <summary type="html">&lt;p&gt;&lt;strong&gt;工厂模式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;把创建对象的过程抽象化，用户指定自己想要的对象，不需要知道实列过程，换句话说，隐藏实列化过程，用户只需要通过固定的接口来调用这个类里边的具体方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三方登录&lt;/strong&gt;&lt;/p&gt;
+&lt;</summary>
         
       
     
