@@ -627,6 +627,14 @@
 </ol>
 </li>
 </ol>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>​    如果我用别人的方法，我的反射一下他代码里是否有我想要的方法，如果有我才调用</p>
+<h2 id="高并发："><a href="#高并发：" class="headerlink" title="高并发："></a>高并发：</h2><p>​    加服务器，增加缓存，负载均衡，配置主从，把读得压力给从库，写的压力太大，分库 分表</p>
+<p>你得有多个服务器，负载均衡，把请求分发给多个服务器，</p>
+<h2 id="网站请求过程"><a href="#网站请求过程" class="headerlink" title="网站请求过程"></a>网站请求过程</h2><p>​    1. 我们知道域名，通过DNS解析成得到IP（http:80 http:443,没写的情况下)，</p>
+<ol start="2">
+<li>拿到ip地址，然后通过 tcp 三次握手建立连接，客户端发送http request ，服务端接收到请求，返回 http response。</li>
+<li>浏览器拿到响应body，渲染页面。</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
