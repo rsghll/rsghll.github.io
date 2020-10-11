@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-10-07T09:32:48.262Z</updated>
+  <updated>2020-10-11T11:24:13.837Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>技术点</title>
+    <link href="https://rsghll.github.io/2020/10/11/5-xiang-mu-ji-zhu-dian-pou-xi/"/>
+    <id>https://rsghll.github.io/2020/10/11/5-xiang-mu-ji-zhu-dian-pou-xi/</id>
+    <published>2020-10-11T11:23:25.164Z</published>
+    <updated>2020-10-11T11:24:13.837Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Django-ORM&quot;&gt;&lt;a href=&quot;#Django-ORM&quot; class=&quot;headerlink&quot; title=&quot;Django ORM&quot;&gt;&lt;/a&gt;Django ORM&lt;/h2&gt;&lt;h1 id=&quot;1-1-项目技术点剖析&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Django" scheme="https://rsghll.github.io/categories/Django/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>m总结</title>
