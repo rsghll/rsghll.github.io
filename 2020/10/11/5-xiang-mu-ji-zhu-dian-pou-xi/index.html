@@ -476,7 +476,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Django-ORM"><a href="#Django-ORM" class="headerlink" title="Django ORM"></a>Django ORM</h2><h1 id="1-1-项目技术点剖析"><a href="#1-1-项目技术点剖析" class="headerlink" title="1.1 项目技术点剖析"></a>1.1 项目技术点剖析</h1><h3 id="1-（金禹含）使用Redis实现分布式部署单点登录（单点登录第一种方法：redis分布式存储解决方案）"><a href="#1-（金禹含）使用Redis实现分布式部署单点登录（单点登录第一种方法：redis分布式存储解决方案）" class="headerlink" title="1.（金禹含）使用Redis实现分布式部署单点登录（单点登录第一种方法：redis分布式存储解决方案）"></a>1.（金禹含）使用Redis实现分布式部署单点登录（单点登录第一种方法：redis分布式存储解决方案）</h3><p>因为这个项目是一个分布式部署的项目，而且我们采用的是nginx负载均衡的策略，导致了每一个服务器都需要开辟一个空间来进行用户信息的维护，消耗了大量的资源，所以，我当时使用到了Redis来作为维护用户信息的空间，将用户登录的信息存入Redis中，并且在存入时设置key的过期时间，所有的服务器共用一个Redis，每次进行操作时只需要去Redis中去判断这个用户是否存在，存在的话就说明这个用户现在是登录状态，不存在就说明这个用户没有登录，或者登录已经失效，让用户进行重新登录。</p>
+                <h1 id="1-1-项目技术点剖析"><a href="#1-1-项目技术点剖析" class="headerlink" title="1.1 项目技术点剖析"></a>1.1 项目技术点剖析</h1><h3 id="1-（金禹含）使用Redis实现分布式部署单点登录（单点登录第一种方法：redis分布式存储解决方案）"><a href="#1-（金禹含）使用Redis实现分布式部署单点登录（单点登录第一种方法：redis分布式存储解决方案）" class="headerlink" title="1.（金禹含）使用Redis实现分布式部署单点登录（单点登录第一种方法：redis分布式存储解决方案）"></a>1.（金禹含）使用Redis实现分布式部署单点登录（单点登录第一种方法：redis分布式存储解决方案）</h3><p>因为这个项目是一个分布式部署的项目，而且我们采用的是nginx负载均衡的策略，导致了每一个服务器都需要开辟一个空间来进行用户信息的维护，消耗了大量的资源，所以，我当时使用到了Redis来作为维护用户信息的空间，将用户登录的信息存入Redis中，并且在存入时设置key的过期时间，所有的服务器共用一个Redis，每次进行操作时只需要去Redis中去判断这个用户是否存在，存在的话就说明这个用户现在是登录状态，不存在就说明这个用户没有登录，或者登录已经失效，让用户进行重新登录。</p>
 <ul>
 <li>为什么会存在单点登录的问题<ul>
 <li><strong>session默认是存储在当前服务器的内存中</strong>，如果是集群，那么只有登录那台机器的内存中才有这个session</li>
@@ -496,9 +496,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="assets/1582078841665.png" alt="1582078841665"></p>
-<h3 id="2-（刘香鹏）基于JWT技术及RSA非对称加密实现真正无状态的单点登录（单点等第二种方法：JWT）"><a href="#2-（刘香鹏）基于JWT技术及RSA非对称加密实现真正无状态的单点登录（单点等第二种方法：JWT）" class="headerlink" title="2.（刘香鹏）基于JWT技术及RSA非对称加密实现真正无状态的单点登录（单点等第二种方法：JWT）"></a>2.（刘香鹏）基于JWT技术及RSA非对称加密实现真正无状态的单点登录（单点等第二种方法：JWT）</h3><p><img src="assets/1582080198139.png" alt="1582080198139"></p>
-<h3 id="3-（刘宏伟）用户登录对接QQ、微信、微博等三方登录"><a href="#3-（刘宏伟）用户登录对接QQ、微信、微博等三方登录" class="headerlink" title="3.（刘宏伟）用户登录对接QQ、微信、微博等三方登录"></a>3.（刘宏伟）用户登录对接QQ、微信、微博等三方登录</h3><p><a target="_blank" rel="noopener" href="https://open.weixin.qq.com/connect/qrconnect">https://open.weixin.qq.com/connect/qrconnect</a>?</p>
+<h3 id="2-（刘香鹏）基于JWT技术及RSA非对称加密实现真正无状态的单点登录（单点等第二种方法：JWT）"><a href="#2-（刘香鹏）基于JWT技术及RSA非对称加密实现真正无状态的单点登录（单点等第二种方法：JWT）" class="headerlink" title="2.（刘香鹏）基于JWT技术及RSA非对称加密实现真正无状态的单点登录（单点等第二种方法：JWT）"></a>2.（刘香鹏）基于JWT技术及RSA非对称加密实现真正无状态的单点登录（单点等第二种方法：JWT）</h3><h3 id="3-（刘宏伟）用户登录对接QQ、微信、微博等三方登录"><a href="#3-（刘宏伟）用户登录对接QQ、微信、微博等三方登录" class="headerlink" title="3.（刘宏伟）用户登录对接QQ、微信、微博等三方登录"></a>3.（刘宏伟）用户登录对接QQ、微信、微博等三方登录</h3><p><a target="_blank" rel="noopener" href="https://open.weixin.qq.com/connect/qrconnect">https://open.weixin.qq.com/connect/qrconnect</a>?</p>
 <p><strong>appid</strong>=wx827225356b689e24&amp;（到官方注册的应用标识，标识开发者）</p>
 <p><strong>redirect_uri</strong>=<a target="_blank" rel="noopener" href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a></p>
 <p>参考博客：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaonq/p/12271345.html">https://www.cnblogs.com/xiaonq/p/12271345.html</a></p>
@@ -511,7 +509,6 @@
 <li>资源分类：商品模块、订单模块、营销模块、权限模块、内容模块、其他模块</li>
 </ul>
 </li>
-<li><img src="assets/image-20200511090755364.png" style="width: 1000px; margin-left: 0px;"> </li>
 </ul>
 </li>
 </ul>
@@ -790,7 +787,6 @@ tmp <span class="token operator">=</span> <span class="token punctuation">[</spa
 <li><p><strong>redis解决超卖问题：</strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaonq/p/12328934.html">https://www.cnblogs.com/xiaonq/p/12328934.html</a></p>
 </li>
 </ul>
-<p><img src="assets/1582252656912.png" alt="1582252656912"></p>
 <h3 id="8-（杨茂森）集成支付宝、微信、银联等进行聚合支付-怎么保证接口安全"><a href="#8-（杨茂森）集成支付宝、微信、银联等进行聚合支付-怎么保证接口安全" class="headerlink" title="8.（杨茂森）集成支付宝、微信、银联等进行聚合支付(怎么保证接口安全)"></a>8.（杨茂森）集成支付宝、微信、银联等进行聚合支付(怎么保证接口安全)</h3><p>支付宝支付：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaonq/p/12332990.html">https://www.cnblogs.com/xiaonq/p/12332990.html</a></p>
 <ul>
 <li><p>相关的资源：appid、支付宝公钥、app公钥、app私钥、django环境</p>
@@ -818,12 +814,10 @@ tmp <span class="token operator">=</span> <span class="token punctuation">[</spa
 </ul>
 </li>
 <li><p>支付宝是如何保证数据安全的（数据传输如何保证安全）</p>
-<p><img src="assets/1582267585674.png" alt="1582267585674"></p>
 </li>
 </ul>
 <h3 id="9-（雷超凡）课程加入路径celery触发更新提醒"><a href="#9-（雷超凡）课程加入路径celery触发更新提醒" class="headerlink" title="9.（雷超凡）课程加入路径celery触发更新提醒"></a>9.（雷超凡）课程加入路径celery触发更新提醒</h3><ul>
 <li><p>celery原理</p>
-<p><img src="assets/1582268223724.png" alt="1582268223724"></p>
 </li>
 <li><p>celery应用场景</p>
 <ul>
@@ -972,7 +966,6 @@ tmp <span class="token operator">=</span> <span class="token punctuation">[</spa
 <li>系统空间分为两个部分，一部分是内核态，一部分是用户态的部分</li>
 <li>内核态：内核态的空间资源只有操作系统能够访问</li>
 <li>用户态：我们写的普通程序使用的空间</li>
-<li><img src="assets/1582510462530.png" alt="1582510462530"></li>
 </ul>
 </li>
 <li><p>select</p>
@@ -992,7 +985,6 @@ tmp <span class="token operator">=</span> <span class="token punctuation">[</spa
 <li>不仅取消了1024这个最大连接限制</li>
 <li>而且能告诉用户程序哪一个是活跃的</li>
 </ul>
-<p><img src="assets/1582511897842.png" alt="1582511897842"></p>
 </li>
 </ul>
 <h3 id="14-（安喻）基于LocalStorage实现离线客户端购物车，减轻服务端压力。"><a href="#14-（安喻）基于LocalStorage实现离线客户端购物车，减轻服务端压力。" class="headerlink" title="14.（安喻）基于LocalStorage实现离线客户端购物车，减轻服务端压力。"></a>14.（安喻）基于LocalStorage实现离线客户端购物车，减轻服务端压力。</h3><ul>
@@ -1008,13 +1000,15 @@ tmp <span class="token operator">=</span> <span class="token punctuation">[</spa
 </li>
 </ul>
 <h3 id="15-（周子贤）基于Redis搭建高可用集群，实现可靠缓存服务即热点数据保存。redis持久化，集群，哨兵，主从，缓存击穿，热点key。"><a href="#15-（周子贤）基于Redis搭建高可用集群，实现可靠缓存服务即热点数据保存。redis持久化，集群，哨兵，主从，缓存击穿，热点key。" class="headerlink" title="15.（周子贤）基于Redis搭建高可用集群，实现可靠缓存服务即热点数据保存。redis持久化，集群，哨兵，主从，缓存击穿，热点key。"></a>15.（周子贤）基于Redis搭建高可用集群，实现可靠缓存服务即热点数据保存。redis持久化，集群，哨兵，主从，缓存击穿，热点key。</h3><ul>
-<li>redis有哪几种集群<ul>
+<li><p>redis有哪几种集群</p>
+<ul>
 <li>主从模式</li>
 <li>哨兵模式</li>
 <li>codis</li>
 </ul>
 </li>
-<li>redis主动同步机制<ul>
+<li><p>redis主动同步机制</p>
+<ul>
 <li><strong>RDB</strong><ul>
 <li>全量同步：从服务器把有的数据全部丢弃，让主服务把所有数据全部发给他</li>
 </ul>
@@ -1031,14 +1025,12 @@ tmp <span class="token operator">=</span> <span class="token punctuation">[</spa
 </li>
 </ul>
 </li>
-<li>redis主从<ul>
+<li><p>redis主从</p>
+<ul>
 <li>写主库、读从库，减轻服务器读压力</li>
 <li>缺点：但是redis主从不能自动切换master，所以master如果挂掉了，整个集群都不可以写入啦</li>
 </ul>
 </li>
-</ul>
-<p><img src="assets/1582594403768.png" alt="1582594403768"></p>
-<ul>
 <li><p>哨兵模式如何解决主从问题</p>
 <ul>
 <li>当用Redis做主从方案时，假如master宕机，Redis本身无法自动进行主备切换</li>
@@ -1047,13 +1039,14 @@ tmp <span class="token operator">=</span> <span class="token punctuation">[</spa
 </li>
 <li><p><strong>sentinel原理</strong></p>
 <ul>
-<li>sentinel负责持续监控主节点的健康，当主节挂掉时，自动选择一个最优的从节点切换成主节点</li>
-<li>从节点来连接集群时会首先连接sentinel，通过sentinel来查询主节点的地址</li>
-<li>当主节点发生故障时，sentinel会将最新的主节点地址告诉客户端，可以实现无需重启自动切换redis</li>
-</ul>
-<p><img src="assets/1582596207680.png" alt="1582596207680"></p>
+<li><p>sentinel负责持续监控主节点的健康，当主节挂掉时，自动选择一个最优的从节点切换成主节点</p>
+</li>
+<li><p>从节点来连接集群时会首先连接sentinel，通过sentinel来查询主节点的地址</p>
+</li>
+<li><p>当主节点发生故障时，sentinel会将最新的主节点地址告诉客户端，可以实现无需重启自动切换redis</p>
+</li>
+<li><p>sentinel缺点</p>
 <ul>
-<li>sentinel缺点<ul>
 <li>redis的slave和master数据时完全一样的，但是有个问题，redis数据时存储在内存中</li>
 <li>内存空间有限，所以哨兵模式不能处理大的数据量</li>
 </ul>
@@ -1089,7 +1082,6 @@ tmp <span class="token operator">=</span> <span class="token punctuation">[</spa
 </ul>
 </li>
 </ul>
-<p><img src="assets/1582599097281.png" alt="1582599097281"></p>
 <h3 id="16-（贾新柱）使用Elasticsearch全文检索"><a href="#16-（贾新柱）使用Elasticsearch全文检索" class="headerlink" title="16.（贾新柱）使用Elasticsearch全文检索"></a>16.（贾新柱）使用Elasticsearch全文检索</h3><h3 id="17-（王卫正）使用协同过滤算法实现课程推荐"><a href="#17-（王卫正）使用协同过滤算法实现课程推荐" class="headerlink" title="17.（王卫正）使用协同过滤算法实现课程推荐"></a>17.（王卫正）<strong>使用协同过滤算法实现课程推荐</strong></h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaonq/p/12797571.html">https://www.cnblogs.com/xiaonq/p/12797571.html</a></p>
 <ul>
 <li><p>什么是协同过滤算法</p>
