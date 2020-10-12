@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-10-11T11:39:01.594Z</updated>
+  <updated>2020-10-12T15:13:58.721Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -17,24 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>技术点</title>
-    <link href="https://rsghll.github.io/2020/10/11/5-xiang-mu-ji-zhu-dian-pou-xi/"/>
-    <id>https://rsghll.github.io/2020/10/11/5-xiang-mu-ji-zhu-dian-pou-xi/</id>
-    <published>2020-10-11T11:23:25.164Z</published>
-    <updated>2020-10-11T11:39:01.594Z</updated>
+    <title>web-flask</title>
+    <link href="https://rsghll.github.io/2020/10/12/day-01-flask/"/>
+    <id>https://rsghll.github.io/2020/10/12/day-01-flask/</id>
+    <published>2020-10-12T15:12:33.150Z</published>
+    <updated>2020-10-12T15:13:58.721Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-1-项目技术点剖析&quot;&gt;&lt;a href=&quot;#1-1-项目技术点剖析&quot; class=&quot;headerlink&quot; title=&quot;1.1 项目技术点剖析&quot;&gt;&lt;/a&gt;1.1 项目技术点剖析&lt;/h1&gt;&lt;h3</summary>
+    <summary type="html">&lt;p&gt;trodom :  性能最好的，异步的&lt;/p&gt;
+&lt;p&gt;django ： 功能最全面的，&lt;/p&gt;
+&lt;p&gt;flask ：（快速，方便）最轻量级的，搭建最简单的快速，功能需要自己构建，web 服务，网页，接口&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;return ‘123’</summary>
         
       
     
     
     
-    <category term="Django" scheme="https://rsghll.github.io/categories/Django/"/>
+    <category term="Flask" scheme="https://rsghll.github.io/categories/Flask/"/>
     
     
     <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
