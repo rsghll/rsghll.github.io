@@ -6,7 +6,7 @@
   <link href="https://rsghll.github.io/atom.xml" rel="self"/>
   
   <link href="https://rsghll.github.io/"/>
-  <updated>2020-10-13T14:03:31.005Z</updated>
+  <updated>2020-10-18T08:14:37.145Z</updated>
   <id>https://rsghll.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>token</title>
+    <link href="https://rsghll.github.io/2020/10/18/token/"/>
+    <id>https://rsghll.github.io/2020/10/18/token/</id>
+    <published>2020-10-18T08:13:24.378Z</published>
+    <updated>2020-10-18T08:14:37.145Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;token&quot;&gt;&lt;a href=&quot;#token&quot; class=&quot;headerlink&quot; title=&quot;token&quot;&gt;&lt;/a&gt;token&lt;/h2&gt;&lt;pre class=&quot; language-python&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="token" scheme="https://rsghll.github.io/categories/token/"/>
+    
+    
+    <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
+    
+    <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>web-flask</title>
@@ -519,27 +546,6 @@
     <category term="Typora" scheme="https://rsghll.github.io/tags/Typora/"/>
     
     <category term="Markdown" scheme="https://rsghll.github.io/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://rsghll.github.io/2020/09/12/hello-world/"/>
-    <id>https://rsghll.github.io/2020/09/12/hello-world/</id>
-    <published>2020-09-12T08:07:57.214Z</published>
-    <updated>2020-09-12T13:19:31.064Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   

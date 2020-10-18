@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="web-flask, Python">
+    <meta name="keywords" content="token, Python">
     <meta name="description" content="你笑的时候是真的在笑嘛？">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>web-flask | Python</title>
+    <title>token | Python</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">web-flask</h1>
+                    <h1 class="description center-align post-title">token</h1>
                 </div>
             </div>
         </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Flask/" class="post-category">
-                                Flask
+                            <a href="/categories/token/" class="post-category">
+                                token
                             </a>
                         
                     </div>
@@ -460,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-12
+                    2020-10-18
                 </div>
                 
 
@@ -476,138 +476,113 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>trodom :  性能最好的，异步的</p>
-<p>django ： 功能最全面的，</p>
-<p>flask ：（快速，方便）最轻量级的，搭建最简单的快速，功能需要自己构建，web 服务，网页，接口</p>
-<ol>
-<li><strong>return ‘123’ 直接返回str</strong></li>
-<li><strong>return ‘hello,你的参数时%s’ % id  接收并返回id</strong></li>
-<li><strong>return redirect(‘<a target="_blank" rel="noopener" href="https://rsghll.github.io&amp;/#39;">https://rsghll.github.io'</a>)  使用redirect指定跳转</strong></li>
-<li><strong>return redirect(url_for(‘index’)) url_for 实现站内跳转 参数是 ‘函数名’</strong></li>
-<li><strong>return jsonify(json_dict) 使用jsonify 返回给前端json数据</strong></li>
-<li><strong>@app.before_first_request 第一次请求调用</strong></li>
-<li><strong>@app.before_request 每一次调用都会使用</strong></li>
-<li><strong>@app.after_request 请求之后调用 必须传响应参数，然后将响应内容返回</strong></li>
-<li><strong>@app.teardown_request 在请求之后调用，调用服务器出现的错误，给个参数e</strong></li>
-<li><strong>@app.errorhandler(405) # Flask 统一对状态码捕获异常，用来进行友好提示，提高用户体验</strong></li>
-</ol>
-<pre><code># 配置文件
-# 解决中文乱码问题，将json数据内的中文正常显示
-# 传统方式 修改代码
-# app.config['JSON_AS_ASCII'] = False
-# # 开启debug模式
-# app.config['DEBUG'] = True</code></pre>
-<h3 id="第一个flask应用"><a href="#第一个flask应用" class="headerlink" title="第一个flask应用"></a>第一个flask应用</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 导包</span>
-<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
-<span class="token keyword">from</span> flask <span class="token keyword">import</span> redirect
-<span class="token keyword">from</span> flask <span class="token keyword">import</span> jsonify
-<span class="token keyword">from</span> flask <span class="token keyword">import</span> url_for
-<span class="token keyword">from</span> flask <span class="token keyword">import</span> request
-
-<span class="token comment" spellcheck="true"># 建立flask对象</span>
-app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+                <h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64
+<span class="token keyword">import</span> copy
+<span class="token keyword">import</span> hmac
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> time
 
 
-<span class="token comment" spellcheck="true"># 建立一个配置类</span>
+<span class="token keyword">class</span> <span class="token class-name">Jwt</span><span class="token punctuation">:</span>
 
-<span class="token keyword">class</span> <span class="token class-name">Config</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    DEBUG <span class="token operator">=</span> <span class="token boolean">True</span>
-    JSON_AS_ASCII <span class="token operator">=</span> <span class="token boolean">False</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
 
+    @staticmethod
+    <span class="token keyword">def</span> <span class="token function">encode</span><span class="token punctuation">(</span>payload<span class="token punctuation">,</span> key<span class="token punctuation">,</span> exp<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-<span class="token comment" spellcheck="true"># 配置文件</span>
-<span class="token comment" spellcheck="true"># 解决中文乱码问题，将json数据内的中文正常显示</span>
+        <span class="token comment" spellcheck="true"># init header</span>
+        header <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'typ'</span><span class="token punctuation">:</span> <span class="token string">'JWT'</span><span class="token punctuation">,</span> <span class="token string">'alg'</span><span class="token punctuation">:</span> <span class="token string">'HS256'</span><span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true"># separators - 指定序列化后的json串格式, 第一个参数</span>
+        <span class="token comment" spellcheck="true"># 指每个键值对之间的连接符号,第二个参数指的是每一个键值对中键和值之间的连接符号</span>
+        <span class="token comment" spellcheck="true"># sort_keys - 将序列化后的字符串进行排序</span>
+        header_json <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>header<span class="token punctuation">,</span> separators<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">,</span> <span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sort_keys<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 生成b64 header</span>
+        header_bs <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>header_json<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true"># 传统方式 修改代码</span>
-<span class="token comment" spellcheck="true"># app.config['JSON_AS_ASCII'] = False</span>
-<span class="token comment" spellcheck="true"># # 开启debug模式</span>
-<span class="token comment" spellcheck="true"># app.config['DEBUG'] = True</span>
+        <span class="token comment" spellcheck="true"># 参数中的 payload {'username': 'aaa'}</span>
+        payload <span class="token operator">=</span> copy<span class="token punctuation">.</span>deepcopy<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 添加公有声明 - exp 且值为未来时间戳</span>
+        payload<span class="token punctuation">[</span><span class="token string">'exp'</span><span class="token punctuation">]</span> <span class="token operator">=</span> int<span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> exp
+        payload_json <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>payload<span class="token punctuation">,</span> separators<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">,</span> <span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sort_keys<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        payload_bs <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>payload_json<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true"># 从配置文件里加载配置 在同目录下创建一个 config.ini</span>
-<span class="token comment" spellcheck="true"># app.config.from_pyfile('config.ini')</span>
+        <span class="token comment" spellcheck="true"># 签名</span>
+        <span class="token comment" spellcheck="true"># 判断传入的key的类型</span>
+        <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>key<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            key <span class="token operator">=</span> key<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        hm <span class="token operator">=</span> hmac<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> header_bs <span class="token operator">+</span> b<span class="token string">'.'</span> <span class="token operator">+</span> payload_bs<span class="token punctuation">,</span> digestmod<span class="token operator">=</span><span class="token string">'SHA256'</span><span class="token punctuation">)</span>
+        hm_bs <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>hm<span class="token punctuation">.</span>digest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        t <span class="token operator">=</span> header_bs <span class="token operator">+</span> b<span class="token string">'.'</span> <span class="token operator">+</span> payload_bs <span class="token operator">+</span> b<span class="token string">'.'</span> <span class="token operator">+</span> hm_bs
 
-js <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'JSON_AS_ASCII'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token string">'DEBUG'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">}</span>
+        <span class="token keyword">return</span> t
 
-<span class="token comment" spellcheck="true"># 从环境变量中加载配置</span>
-<span class="token comment" spellcheck="true"># app.config.from_envvar('config')</span>
+    @staticmethod
+    <span class="token keyword">def</span> <span class="token function">b64encode</span><span class="token punctuation">(</span>j_s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 替换生成出来的b64串中的占位符 =</span>
+        <span class="token keyword">return</span> base64<span class="token punctuation">.</span>urlsafe_b64encode<span class="token punctuation">(</span>j_s<span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span>b<span class="token string">'='</span><span class="token punctuation">,</span> b<span class="token string">''</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true"># 从配置对象来加载配置</span>
-app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>from_object<span class="token punctuation">(</span>Config<span class="token punctuation">)</span>
+    @staticmethod
+    <span class="token keyword">def</span> <span class="token function">b64decode</span><span class="token punctuation">(</span>b64_s<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
+        rem <span class="token operator">=</span> len<span class="token punctuation">(</span>b64_s<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">4</span>
+        <span class="token keyword">if</span> rem <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+            b64_s <span class="token operator">+=</span> b<span class="token string">'='</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">-</span> rem<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> base64<span class="token punctuation">.</span>urlsafe_b64decode<span class="token punctuation">(</span>b64_s<span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true"># json 配置</span>
+    @staticmethod
+    <span class="token keyword">def</span> <span class="token function">decode</span><span class="token punctuation">(</span>token<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 校验两次HMAC结果</span>
+        <span class="token comment" spellcheck="true"># 检查exp公有声明的有效性</span>
+        <span class="token comment" spellcheck="true"># 注意 b64 = 要补全</span>
+        <span class="token comment" spellcheck="true"># 校验成功 返回 payload 字典对象, 失败的话 raise</span>
+        header_b<span class="token punctuation">,</span> payload_b<span class="token punctuation">,</span> sign <span class="token operator">=</span> token<span class="token punctuation">.</span>split<span class="token punctuation">(</span>b<span class="token string">'.'</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true"># 使用flask路由器，指定网址和控制器</span>
-@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> <span class="token string">'123'</span>
+        <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>key<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            key <span class="token operator">=</span> key<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 比较两次HMAC结果</span>
+        hm <span class="token operator">=</span> hmac<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> header_b <span class="token operator">+</span> b<span class="token string">'.'</span> <span class="token operator">+</span> payload_b<span class="token punctuation">,</span> digestmod<span class="token operator">=</span><span class="token string">'SHA256'</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> sign <span class="token operator">!=</span> Jwt<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>hm<span class="token punctuation">.</span>digest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> JwtSignError<span class="token punctuation">(</span><span class="token string">'---sign error !!! '</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 获取payload</span>
+        payload_json <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>payload_b<span class="token punctuation">)</span>
+        payload <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>payload_json<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 校验exp是否过期</span>
+        exp <span class="token operator">=</span> payload<span class="token punctuation">[</span><span class="token string">'exp'</span><span class="token punctuation">]</span>
+        now <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> now <span class="token operator">></span> exp<span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 过期</span>
+            <span class="token keyword">raise</span> JwtExpireError<span class="token punctuation">(</span><span class="token string">'---The token is expire !!!'</span><span class="token punctuation">)</span>
 
-
-<span class="token comment" spellcheck="true"># 接收一个id</span>
-@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/hello/&lt;id>'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token string">'hello,你的参数时%s'</span> <span class="token operator">%</span> id
-
-
-<span class="token comment" spellcheck="true"># 指定回调地址  redirect</span>
-@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/1'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">reurl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment" spellcheck="true"># 指定跳转地址</span>
-    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span><span class="token string">'https://rsghll.github.io'</span><span class="token punctuation">)</span>
-
-
-<span class="token comment" spellcheck="true"># 使用url_for方法来实现简易的站内跳转，参数指定路由方法名称</span>
-@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/2'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">reurl_in</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-<span class="token comment" spellcheck="true"># 使用jsonify模块来让网页直接显示json数据</span>
-@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/json'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">re_json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment" spellcheck="true"># 定义好数据格式</span>
-    json_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">:</span> <span class="token string">'flask的应用666777888'</span><span class="token punctuation">,</span> <span class="token string">'content'</span><span class="token punctuation">:</span> <span class="token string">'flask'</span><span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true"># 使用jsonify来将定义好的数据转换成json格式，并且返回给前端</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span>url_map<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span>json_dict<span class="token punctuation">)</span>
-
-
-<span class="token comment" spellcheck="true"># Flask 统一对状态码捕获异常，用来进行友好提示，提高用户体验</span>
-@app<span class="token punctuation">.</span>errorhandler<span class="token punctuation">(</span><span class="token number">405</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">internal_server_error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> <span class="token string">'请求方法不被允许'</span>
-
-
-@app<span class="token punctuation">.</span>before_first_request
-<span class="token keyword">def</span> <span class="token function">before_first_request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'这是第一次请求之前调用的方法'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> payload
 
 
-<span class="token comment" spellcheck="true"># flask 钩子函数 请求之前调用   @app.before_request</span>
-@app<span class="token punctuation">.</span>before_request
-<span class="token keyword">def</span> <span class="token function">beforn_request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'每一次请求之前，调用这个方法'</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">JwtSignError</span><span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> error_msg<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>error_msg <span class="token operator">=</span> error_msg
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'&lt;JwtSignError is %s>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>error_msg<span class="token punctuation">)</span>
 
 
-<span class="token comment" spellcheck="true"># 在请求之后调用的方法，必须传响应参数，然后将响应内容返回</span>
-@app<span class="token punctuation">.</span>after_request
-<span class="token keyword">def</span> <span class="token function">after_request</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'在请求之后，调用这个方法'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> response
+<span class="token keyword">class</span> <span class="token class-name">JwtExpireError</span><span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> error_msg<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>error_msg <span class="token operator">=</span> error_msg
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'&lt;JwtExpireError is %s>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>error_msg<span class="token punctuation">)</span>
 
 
-<span class="token comment" spellcheck="true"># 在请求之后，调用服务器出现的错误信息，记录错误信息</span>
-@app<span class="token punctuation">.</span>teardown_request
-<span class="token keyword">def</span> <span class="token function">teardown_request</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'服务器出现错误是 %s '</span> <span class="token operator">%</span> str<span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-<span class="token comment" spellcheck="true"># 使用程序入口，将程序启动</span>
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    <span class="token comment" spellcheck="true"># debug=true  表示热启动，修改代码必须要重启服务</span>
-    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+    s <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'username'</span><span class="token punctuation">:</span> <span class="token string">'guoxiaonao'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'abcde'</span><span class="token punctuation">)</span>
+
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    res <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token string">'abcde'</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -651,7 +626,7 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://rsghll.github.io/2020/10/12/day-01-flask/">https://rsghll.github.io/2020/10/12/day-01-flask/</a>
+                    <a href="https://rsghll.github.io/2020/10/18/token/">https://rsghll.github.io/2020/10/18/token/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -862,9 +837,10 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/10/18/token/">
                     <div class="card-image">
@@ -876,16 +852,15 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
                     </div>
                 </a>
                 <div class="card-content article-content">
-						<div class="summary block-with-text">
-							
-								这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-							
-						</div>
-
+                    <div class="summary block-with-text">
+                        
+                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                        
+                    </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -898,6 +873,7 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -920,13 +896,13 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/28/mian-shi-bi-ji/">
+                <a href="/2020/10/12/day-01-flask/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="m总结">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="web-flask">
                         
-                        <span class="card-title">m总结</span>
+                        <span class="card-title">web-flask</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -937,14 +913,14 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9D%83%E9%99%90/" class="post-category">
-                                    权限
+                            <a href="/categories/Flask/" class="post-category">
+                                    Flask
                                 </a>
                             
                             
