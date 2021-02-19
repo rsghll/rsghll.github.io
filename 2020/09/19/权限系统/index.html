@@ -483,11 +483,11 @@
 </ol>
 </li>
 </ol>
-<pre class=" language-python"><code class="language-python">用户表：id ，用户名，<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
+<pre><code class="python">用户表：id ，用户名，----
 
-用户<span class="token operator">-</span>权限table：有用户管理的 就把用户id添加到 这个表里，
+用户-权限table：有用户管理的 就把用户id添加到 这个表里，
 
-权限表： 节点表  <span class="token operator">-</span><span class="token operator">-</span> 用户管理，课程管理，标签管理</code></pre>
+权限表： 节点表  -- 用户管理，课程管理，标签管理</code></pre>
 <ol start="2">
 <li>权限系统一开始不是针对角色的，只针对用户的，（大公司不用ACL）</li>
 </ol>
@@ -495,13 +495,13 @@
 <pre><code>+ 不针对某个用户授权，针对角色
 + 给用户分配某个角色，针对角色授权
 + 可以把role_id 放到 jwt里 就不用四表联查了，</code></pre>
-<pre class=" language-python"><code class="language-python">用户表：role_id<span class="token punctuation">(</span>角色id<span class="token punctuation">)</span>
+<pre><code class="python">用户表：role_id(角色id)
 
 用户角色：（一对多不用创建，多对多需要）
 
 角色表： 超级管理员，课程管理员，用户管理员
 
-角色<span class="token operator">-</span>权限
+角色-权限
 
 权限表： 用户管理页面 课程管理员，标签管理员</code></pre>
 <h3 id="ABac-权限系统-基于属性"><a href="#ABac-权限系统-基于属性" class="headerlink" title="ABac 权限系统 (基于属性)"></a><strong>ABac</strong> 权限系统 (基于属性)</h3><pre><code> 更加细致</code></pre>
@@ -515,25 +515,7 @@
 属性-权限
 
 权限表</code></pre>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 

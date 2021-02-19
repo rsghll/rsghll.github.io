@@ -475,65 +475,47 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="实现一个简单的装饰器-用来对某个函数的结果进行缓存"><a href="#实现一个简单的装饰器-用来对某个函数的结果进行缓存" class="headerlink" title="实现一个简单的装饰器,用来对某个函数的结果进行缓存"></a>实现一个简单的装饰器,用来对某个函数的结果进行缓存</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> time
-<span class="token keyword">import</span> hashlib
-<span class="token keyword">import</span> pickle
+                <h3 id="实现一个简单的装饰器-用来对某个函数的结果进行缓存"><a href="#实现一个简单的装饰器-用来对某个函数的结果进行缓存" class="headerlink" title="实现一个简单的装饰器,用来对某个函数的结果进行缓存"></a>实现一个简单的装饰器,用来对某个函数的结果进行缓存</h3><pre><code class="python">import time
+import hashlib
+import pickle
 
-cache <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-
-<span class="token keyword">def</span> <span class="token function">is_obsolete</span><span class="token punctuation">(</span>entry<span class="token punctuation">,</span> duration<span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true"># 判断缓存是否过期，返回True则过期</span>
-    d <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> entry<span class="token punctuation">[</span><span class="token string">'time'</span><span class="token punctuation">]</span>
-    <span class="token keyword">return</span> d <span class="token operator">></span> duration
+cache = &#123;&#125;
 
 
-<span class="token keyword">def</span> <span class="token function">compute_key</span><span class="token punctuation">(</span>function<span class="token punctuation">,</span> args<span class="token punctuation">,</span> kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 将传入的参数序列化</span>
-    key <span class="token operator">=</span> pickle<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span><span class="token punctuation">(</span>function<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> args<span class="token punctuation">,</span> kwargs<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> hashlib<span class="token punctuation">.</span>sha1<span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+def is_obsolete(entry, duration):   # 判断缓存是否过期，返回True则过期
+    d = time.time() - entry[&#39;time&#39;]
+    return d &gt; duration
 
 
-<span class="token keyword">def</span> <span class="token function">memoize</span><span class="token punctuation">(</span>duration<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true"># 装饰器中缓存时间默认为10秒</span>
-    <span class="token keyword">def</span> <span class="token function">_memorize</span><span class="token punctuation">(</span>function<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 第二层传函数</span>
-        <span class="token keyword">def</span> <span class="token function">__memorize</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 第三层传入非固定参数</span>
-            key <span class="token operator">=</span> compute_key<span class="token punctuation">(</span>function<span class="token punctuation">,</span> args<span class="token punctuation">,</span> kwargs<span class="token punctuation">)</span>
-            <span class="token keyword">if</span> key <span class="token keyword">in</span> cache <span class="token operator">and</span> <span class="token operator">not</span> is_obsolete<span class="token punctuation">(</span>cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> duration<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'we got a winner'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'  '</span><span class="token punctuation">)</span>
-                <span class="token keyword">return</span> cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'value'</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 如果缓存中有，就直接返回缓存过的结果</span>
-            result <span class="token operator">=</span> function<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-            cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'value'</span><span class="token punctuation">:</span> result<span class="token punctuation">,</span> <span class="token string">'time'</span><span class="token punctuation">:</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> result
-        <span class="token keyword">return</span> __memorize
-    <span class="token keyword">return</span> _memorize
+def compute_key(function, args, kwargs):    # 将传入的参数序列化
+    key = pickle.dumps((function.__name__, args, kwargs))
+    return hashlib.sha1(key).hexdigest()
 
 
-@memoize<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">complex</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> a<span class="token operator">+</span>b
-<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-    a<span class="token operator">=</span>int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入a: '</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    b<span class="token operator">=</span>int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入b: '</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>complex<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+def memoize(duration=10):   # 装饰器中缓存时间默认为10秒
+    def _memorize(function):    # 第二层传函数
+        def __memorize(*args, **kwargs):    # 第三层传入非固定参数
+            key = compute_key(function, args, kwargs)
+            if key in cache and not is_obsolete(cache[key], duration):
+                print(&#39;we got a winner&#39;, end=&#39;  &#39;)
+                return cache[key][&#39;value&#39;]  # 如果缓存中有，就直接返回缓存过的结果
+            result = function(*args, **kwargs)
+            cache[key] = &#123;&#39;value&#39;: result, &#39;time&#39;: time.time()&#125;
+            print(cache)
+            return result
+        return __memorize
+    return _memorize
+
+
+@memoize(100)
+def complex(a,b):
+    time.sleep(1)
+    return a+b
+while True:
+    a=int(input(&#39;请输入a: &#39;))
+    b=int(input(&#39;请输入b: &#39;))
+    print(complex(a, b))</code></pre>
+
             </div>
             <hr/>
 

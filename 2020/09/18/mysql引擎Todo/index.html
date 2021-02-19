@@ -513,25 +513,7 @@
 <p>​    悲观锁顾名思义，就是很悲观，每次去拿数据认为数据会被更改，每次拿数据时会上锁，当其他人来拿数据时就会block ，直至拿到锁，传统数据库中的行锁，表锁，读锁，写锁，操作之前会上锁。冲突多时，用悲观锁。</p>
 <p>​    乐观锁：</p>
 <p>​    悲观锁顾名思义，就是很乐观，每次去拿数据认为数据不会被更改，不会上锁，在更新时会判断一下是否有人修改数据，适合多读，提高吞吐量，写比较少，省区锁的开销</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 

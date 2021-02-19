@@ -459,25 +459,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Django-amp-Flask"><a href="#Django-amp-Flask" class="headerlink" title="Django&amp;Flask"></a>Django&amp;Flask</h2><p><strong>Django</strong>走的是大而全的方向，开发效率高。它的MTV框架，自带ORM，admin后台管理，自带的sqlite数据库和开发测试用的服务器，给开发者提高了开发效率。重量级的web框架，功能齐全，提供一站式的解决思路，能让开发者不用在选择上花费大量的时间。<br>自带ORM和模板引擎，支持jinja等非官方模板引擎。<br>自带ORM使Django和关系型数据库耦合度高，如果要使用非关系型数据库，需要使用第三方库。<br>自带数据库管理app。<br>成熟稳定，开发效率高，相对于Flask，Django的整体封闭性比较好，适合做企业级网站的开发。python web框架的先驱，第三方库丰富。<br><strong>Flask</strong>是轻量级的框架，自由灵活，可扩展性，核心基于Werkzeug WSGI工具和jinja2模板引擎<br>适合做小网站以及web服务的API，开发大型网站无压力，但是架构需要自己设计。<br>与关系型数据库的结合不弱于Django，而与非关系型数据库的结合远远优于Django。<br><strong>WSGI</strong>： web服务器网关接口，是一套协议。用于接收用户请求并将请求进行初次封装，然后将请求交给web框架。<br>实现wsgi协议的模块：wsgiref本质上就是编写——socket服务端，用于接受用户请求（django）<br>werkzeug,本质上就是编写一个sock服务端，用于接收用户请求（django）<br><strong>uwsgi</strong>：与WSGI一样是一种通信协议，它是uWSGI服务器的独占协议，用于定义传输信息的类型。<br><strong>uWSGI</strong>：是一个web服务器，实现了WSGI的协议，uWSGI协议，http协议。<br>CORS和CSRF的区别？<br><strong>CORS</strong>是一个W3C标准，全称是“跨域资源共享”（Cross-origin resoure sharing）。它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了Ajax只能同源使用的限制。<br><strong>CSRF</strong>主流防御方式是在后端生产表单的时候生成一串随机token，内置到表单里成为一个字段，同时，将此串token置入session中。每次表单提交到后端时都会检查这两个值是否一致，以此来判断此次表单提交是否可信，提交过一次之后，如果这个页面没有生成CSRF token，那么token将会被清空。如果有新的需求，那么token会被更新。攻击者可以伪造POST表单提交，但是他没有后端生成的内置于表单的token，session中没有token都无济于事。<br><strong>nginx</strong> 是一个开源的高性能的HTTP服务器和反向代理：<br>1.作为web服务器，它处理静态文件和索引文件效果非常高；<br>2.它的设计非常注重效率，最大支持5万个并发连接，但只占用很少的内存空间；<br>3.稳定性高，配置简洁；<br>4.强大的反向代理和负载均衡功能，平衡集群中各个服务器的负载压力应用。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 

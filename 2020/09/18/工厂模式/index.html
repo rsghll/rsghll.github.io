@@ -475,57 +475,39 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">WeiBo</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>slef<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">'新浪三方登录'</span>
+                <h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><pre><code class="python">class WeiBo:
+    def __repr__(slef):
+        return &#39;新浪三方登录&#39;
 
 
-<span class="token keyword">class</span> <span class="token class-name">DingDing</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>slef<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">'钉钉三方登录'</span>
+class DingDing:
+    def __repr__(slef):
+        return &#39;钉钉三方登录&#39;
 
-<span class="token comment" spellcheck="true"># 用那个调那个</span>
-weibo <span class="token operator">=</span> WeiBo<span class="token punctuation">(</span><span class="token punctuation">)</span>
-dingding <span class="token operator">=</span> DingDing<span class="token punctuation">(</span><span class="token punctuation">)</span>
+# 用那个调那个
+weibo = WeiBo()
+dingding = DingDing()
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>weibo<span class="token punctuation">)</span></code></pre>
+print(weibo)</code></pre>
 <ol>
 <li>现在只有两个，明天添加微信，后天做一个QQ等等，我们不知道社交账号什么时候完结，我们就得做无数个类，会被累死，一个两个没问题，N 多个时，就不知实列化那个了，这种方式也可以做，我一千个类判断一下类名就行了，实际上可以，但不好维护，如果是一个调用方，认证部门做三方，如果是支付部门的，他要来调用类，一看这么多类，他就不知道调用那个，就得自己去找，很麻烦。</li>
 <li>这时候就要用设计模式得工厂模式，对对象的创建过程抽象化，让用户指定自己想要得对象，而不必关心对象的实列化过程，换句话说，就是把实列化过程隐藏起来，用户只需要通过固定的接口来调用这个类里边的具体方法，就ok了，不需要考虑调用那个类，怎么实列化对象他就不关心了，跟他没关系了，这样就可以解耦了，降低耦合度，类自己写的，没关系，很好调用，如果是其他人，他就得先熟悉你的代码，这个过程省略，就叫工厂模式，主要降低维护得复杂性，</li>
 </ol>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 工厂模式</span>
-<span class="token keyword">class</span> <span class="token class-name">SimpleFactory</span><span class="token punctuation">:</span>
-    @staticmethod <span class="token comment" spellcheck="true"># 不需要实列化，直接调用</span>
-    <span class="token keyword">def</span> <span class="token function">ThirdLogin</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 不写self 不是类方法</span>
-        <span class="token keyword">if</span> name <span class="token operator">==</span> <span class="token string">'weibo'</span><span class="token punctuation">:</span>
-            rerurn WieBo<span class="token punctuation">(</span><span class="token punctuation">)</span>
-         <span class="token keyword">elif</span> name <span class="token operator">==</span> <span class="token string">'DingDing'</span><span class="token punctuation">:</span>
+<pre><code class="python"># 工厂模式
+class SimpleFactory:
+    @staticmethod # 不需要实列化，直接调用
+    def ThirdLogin(name):    # 不写self 不是类方法
+        if name == &#39;weibo&#39;:
+            rerurn WieBo()
+         elif name == &#39;DingDing&#39;:
 
- dinding <span class="token operator">=</span> SimpleFactory<span class="token punctuation">.</span>ThirdLogin<span class="token punctuation">(</span><span class="token string">'dingding'</span><span class="token punctuation">)</span></code></pre>
+ dinding = SimpleFactory.ThirdLogin(&#39;dingding&#39;)</code></pre>
 <ol>
 <li>不需要实列化对象，使用静态方法省略。</li>
 <li>我也不考虑他是那个类里是“顶顶”，我只需要传参，里边的逻辑不用管</li>
 <li>只要给我一个参数，你不用管，我也不用管，我们各自为战，实现了解耦</li>
 </ol>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 

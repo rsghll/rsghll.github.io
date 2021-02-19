@@ -529,7 +529,7 @@
 <ul>
 <li><p>有where条件，count(*)两个存储引擎性能差不多</p>
 </li>
-<li><p>不要使用全文索引，应当使用《<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;mid=2651959917&amp;idx=1&amp;sn=8faeae7419a756b0c355af2b30c255df&amp;chksm=bd2d07b18a5a8ea75f16f7e98ea897c7e7f47a0441c64bdaef8445a2100e0bdd2a7de99786c0&amp;scene=21#wechat_redirect">索引外置</a>》的设计方案</p>
+<li><p>不要使用全文索引，应当使用《<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&mid=2651959917&idx=1&sn=8faeae7419a756b0c355af2b30c255df&chksm=bd2d07b18a5a8ea75f16f7e98ea897c7e7f47a0441c64bdaef8445a2100e0bdd2a7de99786c0&scene=21#wechat_redirect">索引外置</a>》的设计方案</p>
 </li>
 <li><p>事务影响性能，强一致性要求才使用事务</p>
 </li>
@@ -542,7 +542,7 @@
 </ul>
 <h2 id="InnoDB-四种事务隔离级别"><a href="#InnoDB-四种事务隔离级别" class="headerlink" title="InnoDB 四种事务隔离级别"></a>InnoDB 四种事务隔离级别</h2><p><strong>InnoDB默认是可重复读的（REPEATABLE READ）</strong></p>
 <p>修改全局默认的事务级别，在my.inf文件的[mysqld]节里类似如下设置该选项（不推荐）</p>
-<pre class=" language-java"><code class="language-java">transaction<span class="token operator">-</span>isolation <span class="token operator">=</span> <span class="token punctuation">{</span>READ<span class="token operator">-</span>UNCOMMITTED <span class="token operator">|</span> READ<span class="token operator">-</span>COMMITTED <span class="token operator">|</span> REPEATABLE<span class="token operator">-</span>READ <span class="token operator">|</span> SERIALIZABLE<span class="token punctuation">}</span></code></pre>
+<pre><code class="java">transaction-isolation = &#123;READ-UNCOMMITTED | READ-COMMITTED | REPEATABLE-READ | SERIALIZABLE&#125;</code></pre>
 <p> <strong>四种隔离级别说明</strong></p>
 <table>
 <thead>
@@ -587,25 +587,7 @@
 <p>不可重复读是指A事务读取了B事务已经提交的更改数据。假如A在取款事务的过程中，B往该账户转账100，A两次读取的余额发生不一致。</p>
 <p><strong>3.幻读</strong></p>
 <p>A事务读取B事务提交的新增数据,会引发幻读问题。幻读一般发生在计算统计数据的事务中，例如银行系统在同一个事务中两次统计存款账户的总金额，在两次统计中，刚好新增了一个存款账户，存入了100，这时候两次统计的总金额不一致。<br><img src="https://img-blog.csdn.net/20170731153407212?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3RhcmxoMzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>注意：不可重复读和幻读的区别是：前者是指读到了已经提交的事务的更改数据（修改或删除），后者是指读到了其他已经提交事务的新增数据。对于这两种问题解决采用不同的办法，防止读到更改数据，只需对操作的数据添加行级锁，防止操作中的数据发生变化；二防止读到新增数据，往往需要添加表级锁，将整张表锁定，防止新增数据（oracle采用多版本数据的方式实现）。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 

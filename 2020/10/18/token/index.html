@@ -475,132 +475,114 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64
-<span class="token keyword">import</span> copy
-<span class="token keyword">import</span> hmac
-<span class="token keyword">import</span> json
-<span class="token keyword">import</span> time
+                <h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><pre><code class="python">import base64
+import copy
+import hmac
+import json
+import time
 
 
-<span class="token keyword">class</span> <span class="token class-name">Jwt</span><span class="token punctuation">:</span>
+class Jwt:
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">pass</span>
-
-    @staticmethod
-    <span class="token keyword">def</span> <span class="token function">encode</span><span class="token punctuation">(</span>payload<span class="token punctuation">,</span> key<span class="token punctuation">,</span> exp<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-        <span class="token comment" spellcheck="true"># init header</span>
-        header <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'typ'</span><span class="token punctuation">:</span> <span class="token string">'JWT'</span><span class="token punctuation">,</span> <span class="token string">'alg'</span><span class="token punctuation">:</span> <span class="token string">'HS256'</span><span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true"># separators - 指定序列化后的json串格式, 第一个参数</span>
-        <span class="token comment" spellcheck="true"># 指每个键值对之间的连接符号,第二个参数指的是每一个键值对中键和值之间的连接符号</span>
-        <span class="token comment" spellcheck="true"># sort_keys - 将序列化后的字符串进行排序</span>
-        header_json <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>header<span class="token punctuation">,</span> separators<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">,</span> <span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sort_keys<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># 生成b64 header</span>
-        header_bs <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>header_json<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-        <span class="token comment" spellcheck="true"># 参数中的 payload {'username': 'aaa'}</span>
-        payload <span class="token operator">=</span> copy<span class="token punctuation">.</span>deepcopy<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># 添加公有声明 - exp 且值为未来时间戳</span>
-        payload<span class="token punctuation">[</span><span class="token string">'exp'</span><span class="token punctuation">]</span> <span class="token operator">=</span> int<span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> exp
-        payload_json <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>payload<span class="token punctuation">,</span> separators<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">,</span> <span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sort_keys<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-        payload_bs <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>payload_json<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-        <span class="token comment" spellcheck="true"># 签名</span>
-        <span class="token comment" spellcheck="true"># 判断传入的key的类型</span>
-        <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>key<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            key <span class="token operator">=</span> key<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        hm <span class="token operator">=</span> hmac<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> header_bs <span class="token operator">+</span> b<span class="token string">'.'</span> <span class="token operator">+</span> payload_bs<span class="token punctuation">,</span> digestmod<span class="token operator">=</span><span class="token string">'SHA256'</span><span class="token punctuation">)</span>
-        hm_bs <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>hm<span class="token punctuation">.</span>digest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        t <span class="token operator">=</span> header_bs <span class="token operator">+</span> b<span class="token string">'.'</span> <span class="token operator">+</span> payload_bs <span class="token operator">+</span> b<span class="token string">'.'</span> <span class="token operator">+</span> hm_bs
-
-        <span class="token keyword">return</span> t
+    def __init__(self):
+        pass
 
     @staticmethod
-    <span class="token keyword">def</span> <span class="token function">b64encode</span><span class="token punctuation">(</span>j_s<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment" spellcheck="true"># 替换生成出来的b64串中的占位符 =</span>
-        <span class="token keyword">return</span> base64<span class="token punctuation">.</span>urlsafe_b64encode<span class="token punctuation">(</span>j_s<span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span>b<span class="token string">'='</span><span class="token punctuation">,</span> b<span class="token string">''</span><span class="token punctuation">)</span>
+    def encode(payload, key, exp=2):
+
+        # init header
+        header = &#123;&#39;typ&#39;: &#39;JWT&#39;, &#39;alg&#39;: &#39;HS256&#39;&#125;
+        # separators - 指定序列化后的json串格式, 第一个参数
+        # 指每个键值对之间的连接符号,第二个参数指的是每一个键值对中键和值之间的连接符号
+        # sort_keys - 将序列化后的字符串进行排序
+        header_json = json.dumps(header, separators=(&#39;,&#39;, &#39;:&#39;), sort_keys=True)
+        # 生成b64 header
+        header_bs = Jwt.b64encode(header_json.encode())
+
+        # 参数中的 payload &#123;&#39;username&#39;: &#39;aaa&#39;&#125;
+        payload = copy.deepcopy(payload)
+        # 添加公有声明 - exp 且值为未来时间戳
+        payload[&#39;exp&#39;] = int(time.time()) + exp
+        payload_json = json.dumps(payload, separators=(&#39;,&#39;, &#39;:&#39;), sort_keys=True)
+        payload_bs = Jwt.b64encode(payload_json.encode())
+
+        # 签名
+        # 判断传入的key的类型
+        if isinstance(key, str):
+            key = key.encode()
+        hm = hmac.new(key, header_bs + b&#39;.&#39; + payload_bs, digestmod=&#39;SHA256&#39;)
+        hm_bs = Jwt.b64encode(hm.digest())
+        t = header_bs + b&#39;.&#39; + payload_bs + b&#39;.&#39; + hm_bs
+
+        return t
 
     @staticmethod
-    <span class="token keyword">def</span> <span class="token function">b64decode</span><span class="token punctuation">(</span>b64_s<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-        rem <span class="token operator">=</span> len<span class="token punctuation">(</span>b64_s<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">4</span>
-        <span class="token keyword">if</span> rem <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-            b64_s <span class="token operator">+=</span> b<span class="token string">'='</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">-</span> rem<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> base64<span class="token punctuation">.</span>urlsafe_b64decode<span class="token punctuation">(</span>b64_s<span class="token punctuation">)</span>
+    def b64encode(j_s):
+        # 替换生成出来的b64串中的占位符 =
+        return base64.urlsafe_b64encode(j_s).replace(b&#39;=&#39;, b&#39;&#39;)
 
     @staticmethod
-    <span class="token keyword">def</span> <span class="token function">decode</span><span class="token punctuation">(</span>token<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment" spellcheck="true"># 校验两次HMAC结果</span>
-        <span class="token comment" spellcheck="true"># 检查exp公有声明的有效性</span>
-        <span class="token comment" spellcheck="true"># 注意 b64 = 要补全</span>
-        <span class="token comment" spellcheck="true"># 校验成功 返回 payload 字典对象, 失败的话 raise</span>
-        header_b<span class="token punctuation">,</span> payload_b<span class="token punctuation">,</span> sign <span class="token operator">=</span> token<span class="token punctuation">.</span>split<span class="token punctuation">(</span>b<span class="token string">'.'</span><span class="token punctuation">)</span>
+    def b64decode(b64_s):
 
-        <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>key<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            key <span class="token operator">=</span> key<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># 比较两次HMAC结果</span>
-        hm <span class="token operator">=</span> hmac<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> header_b <span class="token operator">+</span> b<span class="token string">'.'</span> <span class="token operator">+</span> payload_b<span class="token punctuation">,</span> digestmod<span class="token operator">=</span><span class="token string">'SHA256'</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> sign <span class="token operator">!=</span> Jwt<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>hm<span class="token punctuation">.</span>digest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">raise</span> JwtSignError<span class="token punctuation">(</span><span class="token string">'---sign error !!! '</span><span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># 获取payload</span>
-        payload_json <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>payload_b<span class="token punctuation">)</span>
-        payload <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>payload_json<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># 校验exp是否过期</span>
-        exp <span class="token operator">=</span> payload<span class="token punctuation">[</span><span class="token string">'exp'</span><span class="token punctuation">]</span>
-        now <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> now <span class="token operator">></span> exp<span class="token punctuation">:</span>
-            <span class="token comment" spellcheck="true"># 过期</span>
-            <span class="token keyword">raise</span> JwtExpireError<span class="token punctuation">(</span><span class="token string">'---The token is expire !!!'</span><span class="token punctuation">)</span>
+        rem = len(b64_s) % 4
+        if rem &gt; 0:
+            b64_s += b&#39;=&#39; * (4 - rem)
+        return base64.urlsafe_b64decode(b64_s)
 
-        <span class="token keyword">return</span> payload
+    @staticmethod
+    def decode(token, key):
+        # 校验两次HMAC结果
+        # 检查exp公有声明的有效性
+        # 注意 b64 = 要补全
+        # 校验成功 返回 payload 字典对象, 失败的话 raise
+        header_b, payload_b, sign = token.split(b&#39;.&#39;)
 
+        if isinstance(key, str):
+            key = key.encode()
+        # 比较两次HMAC结果
+        hm = hmac.new(key, header_b + b&#39;.&#39; + payload_b, digestmod=&#39;SHA256&#39;)
+        if sign != Jwt.b64encode(hm.digest()):
+            raise JwtSignError(&#39;---sign error !!! &#39;)
+        # 获取payload
+        payload_json = Jwt.b64decode(payload_b)
+        payload = json.loads(payload_json.decode())
+        # 校验exp是否过期
+        exp = payload[&#39;exp&#39;]
+        now = time.time()
+        if now &gt; exp:
+            # 过期
+            raise JwtExpireError(&#39;---The token is expire !!!&#39;)
 
-<span class="token keyword">class</span> <span class="token class-name">JwtSignError</span><span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> error_msg<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>error_msg <span class="token operator">=</span> error_msg
-
-    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">'&lt;JwtSignError is %s>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>error_msg<span class="token punctuation">)</span>
-
-
-<span class="token keyword">class</span> <span class="token class-name">JwtExpireError</span><span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> error_msg<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>error_msg <span class="token operator">=</span> error_msg
-
-    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">'&lt;JwtExpireError is %s>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>error_msg<span class="token punctuation">)</span>
+        return payload
 
 
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'username'</span><span class="token punctuation">:</span> <span class="token string">'guoxiaonao'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'abcde'</span><span class="token punctuation">)</span>
+class JwtSignError(Exception):
 
-    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    def __init__(self, error_msg):
+        self.error_msg = error_msg
 
-    res <span class="token operator">=</span> Jwt<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token string">'abcde'</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span></code></pre>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+    def __str__(self):
+        return &#39;&lt;JwtSignError is %s&gt;&#39; % (self.error_msg)
+
+
+class JwtExpireError(Exception):
+
+    def __init__(self, error_msg):
+        self.error_msg = error_msg
+
+    def __str__(self):
+        return &#39;&lt;JwtExpireError is %s&gt;&#39; % (self.error_msg)
+
+
+if __name__ == &#39;__main__&#39;:
+    s = Jwt.encode(&#123;&#39;username&#39;: &#39;guoxiaonao&#39;&#125;, &#39;abcde&#39;)
+
+    time.sleep(2)
+
+    res = Jwt.decode(s, &#39;abcde&#39;)
+    print(s)
+    print(res)</code></pre>
+
             </div>
             <hr/>
 

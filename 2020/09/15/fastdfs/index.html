@@ -511,115 +511,97 @@
 </ul>
 <p>fastdfs集群:</p>
 <p>​     注意: 一定要删除  /var/fdfs/ 目录下的文件 (此目录下的文件包含旧的配置, 会造成服务无法访问)</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 加载docker镜像</span>
-sudo docker load <span class="token operator">-</span>i fastdfs_docker<span class="token punctuation">.</span>tar
+<pre><code class="python"># 加载docker镜像
+sudo docker load -i fastdfs_docker.tar
 
-<span class="token comment" spellcheck="true"># 启动tracker</span>
-sudo docker run <span class="token operator">-</span>dit <span class="token operator">-</span><span class="token operator">-</span>name tracker <span class="token operator">-</span><span class="token operator">-</span>network<span class="token operator">=</span>host <span class="token operator">-</span>v <span class="token operator">/</span>var<span class="token operator">/</span>fdfs<span class="token operator">/</span>tracker<span class="token punctuation">:</span><span class="token operator">/</span>var<span class="token operator">/</span>fdfs delron<span class="token operator">/</span>fastdfs tracker
+# 启动tracker
+sudo docker run -dit --name tracker --network=host -v /var/fdfs/tracker:/var/fdfs delron/fastdfs tracker
 
-<span class="token comment" spellcheck="true"># 启动storage</span>
-sudo docker run <span class="token operator">-</span>dti <span class="token operator">-</span><span class="token operator">-</span>name storage <span class="token operator">-</span><span class="token operator">-</span>network<span class="token operator">=</span>host <span class="token operator">-</span>e TRACKER_SERVER<span class="token operator">=</span><span class="token number">10.211</span><span class="token punctuation">.</span><span class="token number">55.15</span><span class="token punctuation">:</span><span class="token number">22122</span> <span class="token operator">-</span>v <span class="token operator">/</span>var<span class="token operator">/</span>fdfs<span class="token operator">/</span>storage<span class="token punctuation">:</span><span class="token operator">/</span>var<span class="token operator">/</span>fdfs delron<span class="token operator">/</span>fastdfs storage
+# 启动storage
+sudo docker run -dti --name storage --network=host -e TRACKER_SERVER=10.211.55.15:22122 -v /var/fdfs/storage:/var/fdfs delron/fastdfs storage
 
-<span class="token comment" spellcheck="true"># http://10.211.55.15:8888/  这是 storage的访问地址</span>
+# http://10.211.55.15:8888/  这是 storage的访问地址
 </code></pre>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 安装依赖</span>
-pip install py3Fdfs<span class="token operator">==</span><span class="token number">2.2</span><span class="token punctuation">.</span><span class="token number">0</span>
-pip install mutagen<span class="token operator">==</span><span class="token number">1.45</span><span class="token punctuation">.</span><span class="token number">1</span>
-pip install requests<span class="token operator">==</span><span class="token number">2.22</span><span class="token punctuation">.</span><span class="token number">0</span>
+<pre><code class="python"># 安装依赖
+pip install py3Fdfs==2.2.0
+pip install mutagen==1.45.1
+pip install requests==2.22.0
 
-<span class="token comment" spellcheck="true"># 增加目录</span>
-<span class="token comment" spellcheck="true"># /utils/fdfs/</span>
+# 增加目录
+# /utils/fdfs/
 
-<span class="token comment" spellcheck="true"># 增加配置文件 </span>
-<span class="token comment" spellcheck="true"># /utils/fdfs/client.conf</span>
-connect_timeout<span class="token operator">=</span><span class="token number">30</span>
-network_timeout<span class="token operator">=</span><span class="token number">120</span>
-<span class="token comment" spellcheck="true"># the base path to store log files</span>
-base_path<span class="token operator">=</span><span class="token operator">~</span><span class="token operator">/</span>Desktop
-<span class="token comment" spellcheck="true"># ip:port</span>
-tracker_server<span class="token operator">=</span><span class="token number">10.211</span><span class="token punctuation">.</span><span class="token number">55.15</span><span class="token punctuation">:</span><span class="token number">22122</span>
-log_level<span class="token operator">=</span>info
-use_connection_pool <span class="token operator">=</span> false
-connection_pool_max_idle_time <span class="token operator">=</span> <span class="token number">3600</span>
-load_fdfs_parameters_from_tracker<span class="token operator">=</span>false
-use_storage_id <span class="token operator">=</span> false
-storage_ids_filename <span class="token operator">=</span> storage_ids<span class="token punctuation">.</span>conf
-http<span class="token punctuation">.</span>tracker_server_port<span class="token operator">=</span><span class="token number">80</span>
+# 增加配置文件 
+# /utils/fdfs/client.conf
+connect_timeout=30
+network_timeout=120
+# the base path to store log files
+base_path=~/Desktop
+# ip:port
+tracker_server=10.211.55.15:22122
+log_level=info
+use_connection_pool = false
+connection_pool_max_idle_time = 3600
+load_fdfs_parameters_from_tracker=false
+use_storage_id = false
+storage_ids_filename = storage_ids.conf
+http.tracker_server_port=80
 
 
-<span class="token comment" spellcheck="true"># 测试fastdfs客户端</span>
-<span class="token comment" spellcheck="true"># /utils/fdfs/test.py</span>
-<span class="token keyword">from</span> fdfs_client<span class="token punctuation">.</span>client <span class="token keyword">import</span> get_tracker_conf<span class="token punctuation">,</span> Fdfs_client
+# 测试fastdfs客户端
+# /utils/fdfs/test.py
+from fdfs_client.client import get_tracker_conf, Fdfs_client
 
-<span class="token keyword">from</span> syl<span class="token punctuation">.</span>settings <span class="token keyword">import</span> FDFS_CONF_PATH
-<span class="token comment" spellcheck="true"># 1. 获取配置文件</span>
-conf <span class="token operator">=</span> get_tracker_conf<span class="token punctuation">(</span>conf_path<span class="token operator">=</span>FDFS_CONF_PATH<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>conf<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 2. 创建FastDFS客户端实例</span>
-client <span class="token operator">=</span> Fdfs_client<span class="token punctuation">(</span>conf<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 3. 调用FastDFS客户端上传文件方法,</span>
-ret <span class="token operator">=</span> client<span class="token punctuation">.</span>upload_by_filename<span class="token punctuation">(</span><span class="token string">'/Users/mac/Pictures/0.jpg'</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span>
+from syl.settings import FDFS_CONF_PATH
+# 1. 获取配置文件
+conf = get_tracker_conf(conf_path=FDFS_CONF_PATH)
+print(conf)
+# 2. 创建FastDFS客户端实例
+client = Fdfs_client(conf)
+# 3. 调用FastDFS客户端上传文件方法,
+ret = client.upload_by_filename(&#39;/Users/mac/Pictures/0.jpg&#39;)
+print(ret)
 </code></pre>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 自定义存储后端</span>
-<span class="token comment" spellcheck="true"># utils/fdfs/my_storage.py</span>
-<span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>files<span class="token punctuation">.</span>storage <span class="token keyword">import</span> Storage
-<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf <span class="token keyword">import</span> settings
-<span class="token keyword">from</span> fdfs_client<span class="token punctuation">.</span>client <span class="token keyword">import</span> Fdfs_client<span class="token punctuation">,</span> get_tracker_conf
+<pre><code class="python"># 自定义存储后端
+# utils/fdfs/my_storage.py
+from django.core.files.storage import Storage
+from django.conf import settings
+from fdfs_client.client import Fdfs_client, get_tracker_conf
 
 
-<span class="token keyword">class</span> <span class="token class-name">MyStorage</span><span class="token punctuation">(</span>Storage<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>base_url <span class="token operator">=</span> settings<span class="token punctuation">.</span>FDFS_BASE_URL
+class MyStorage(Storage):
+    def __init__(self):
+        self.base_url = settings.FDFS_BASE_URL
 
-    <span class="token keyword">def</span> <span class="token function">_open</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'rb'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">pass</span>
+    def _open(self, name, mode=&#39;rb&#39;):
+        pass
 
-    <span class="token keyword">def</span> <span class="token function">_save</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> content<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment" spellcheck="true"># 返回 真实存储的 文件名</span>
-        <span class="token comment" spellcheck="true"># 1. 读取配置文件</span>
-        conf <span class="token operator">=</span> get_tracker_conf<span class="token punctuation">(</span>conf_path<span class="token operator">=</span>settings<span class="token punctuation">.</span>FDFS_CONF_PATH<span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># 2. 创建FastDFS客户端实例</span>
-        client <span class="token operator">=</span> Fdfs_client<span class="token punctuation">(</span>conf<span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># 3. 调用FastDFS客户端上传文件方法</span>
-        ret <span class="token operator">=</span> client<span class="token punctuation">.</span>upload_by_buffer<span class="token punctuation">(</span>content<span class="token punctuation">.</span>file<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> ret<span class="token punctuation">[</span><span class="token string">'Remote file_id'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    def _save(self, name, content):
+        # 返回 真实存储的 文件名
+        # 1. 读取配置文件
+        conf = get_tracker_conf(conf_path=settings.FDFS_CONF_PATH)
+        # 2. 创建FastDFS客户端实例
+        client = Fdfs_client(conf)
+        # 3. 调用FastDFS客户端上传文件方法
+        ret = client.upload_by_buffer(content.file.read())
+        return ret[&#39;Remote file_id&#39;].decode()
 
-    <span class="token keyword">def</span> <span class="token function">url</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>base_url <span class="token operator">+</span> name
+    def url(self, name):
+        return self.base_url + name
 
-    <span class="token keyword">def</span> <span class="token function">exists</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token boolean">False</span>
+    def exists(self, name):
+        return False
 
 
-<span class="token comment" spellcheck="true"># 配置 fastdfs</span>
-<span class="token comment" spellcheck="true"># fasfdfs 服务器地址</span>
-FDFS_BASE_URL <span class="token operator">=</span> <span class="token string">'http://10.211.55.15:8888/'</span>
-FDFS_CONF_PATH <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'utils/fdfs/client.conf'</span><span class="token punctuation">)</span>
+# 配置 fastdfs
+# fasfdfs 服务器地址
+FDFS_BASE_URL = &#39;http://10.211.55.15:8888/&#39;
+FDFS_CONF_PATH = os.path.join(BASE_DIR, &#39;utils/fdfs/client.conf&#39;)
 
-<span class="token comment" spellcheck="true"># 修改系统默认的文件管理类</span>
-DEFAULT_FILE_STORAGE <span class="token operator">=</span> <span class="token string">'utils.fdfs.my_storage.MyStorage'</span>
+# 修改系统默认的文件管理类
+DEFAULT_FILE_STORAGE = &#39;utils.fdfs.my_storage.MyStorage&#39;
 
 </code></pre>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
